@@ -6,14 +6,26 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using StoreSurvey.Models;
+using StoreSurvey.Providers;
 
 namespace StoreSurvey.Controllers
 {
     public class AccountController : Controller
     {
-
+        public StoreMembershipProvider MembershipService { get; set; }
+        public StoreRoleProvider AuthorizationService { get; set; }
         //
         // GET: /Account/LogOn
+        protected override void Initialize(RequestContext requestContext)
+        {
+            if (MembershipService == null)
+                MembershipService = new StoreMembershipProvider();
+            if (AuthorizationService == null)
+                AuthorizationService = new StoreRoleProvider();
+
+            base.Initialize(requestContext);
+
+        }
 
         public ActionResult LogOn()
         {
@@ -28,7 +40,7 @@ namespace StoreSurvey.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(model.UserName, model.Password))
+                if (MembershipService.ValidateUser(model.UserName, model.Password))
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
@@ -79,17 +91,16 @@ namespace StoreSurvey.Controllers
             if (ModelState.IsValid)
             {
                 // Attempt to register the user
-                MembershipCreateStatus createStatus;
-                Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
-
-                if (createStatus == MembershipCreateStatus.Success)
+                try
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
+                    MembershipService.CreateUser(model.UserName, model.Name, model.Password, model.Email, "Admin");
+
+                    FormsAuthentication.SetAuthCookie(model.UserName, false);
                     return RedirectToAction("Index", "Home");
                 }
-                else
+                catch (ArgumentException ae)
                 {
-                    ModelState.AddModelError("", ErrorCodeToString(createStatus));
+                    ModelState.AddModelError("", ae.Message);
                 }
             }
 
@@ -115,28 +126,10 @@ namespace StoreSurvey.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                // ChangePassword will throw an exception rather
-                // than return false in certain failure scenarios.
-                bool changePasswordSucceeded;
-                try
-                {
-                    MembershipUser currentUser = Membership.GetUser(User.Identity.Name, true /* userIsOnline */);
-                    changePasswordSucceeded = currentUser.ChangePassword(model.OldPassword, model.NewPassword);
-                }
-                catch (Exception)
-                {
-                    changePasswordSucceeded = false;
-                }
-
-                if (changePasswordSucceeded)
-                {
+                if (MembershipService.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword))
                     return RedirectToAction("ChangePasswordSuccess");
-                }
                 else
-                {
                     ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
-                }
             }
 
             // If we got this far, something failed, redisplay form
