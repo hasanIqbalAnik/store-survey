@@ -1,0 +1,56 @@
+﻿@model IEnumerable<StoreSurvey.User>
+<script type="text/javascript">
+    console.log("asdklfjsadfjh");
+
+    $('.confirmmodalcontainer').confirmModal();
+
+
+</script>
+<div class="span9">
+    <table class="table table-striped">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            User Name
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Role
+        </th>
+        <th>
+            Active
+        </th>
+        <th>
+            Actions
+        </th>
+        </tr>
+        @foreach (StoreSurvey.User user in Model)
+        {
+            <tr>
+                <td>
+                    @user.Name
+                </td>
+                <td>
+                    @user.UserName
+                </td>
+                <td>
+                    @user.Email
+                </td>
+                <td>
+                    @user.Role.Name
+                </td>
+                <td>
+                    @user.Active
+                </td>
+                <td>
+                    <a href="#"  class="btn" style="text-decoration:none" id="lock">Lock</a> 
+                    <a href="#" class="btn" style="text-decoration:none" id="edit"> Edit</a>
+                </td>
+            </tr>    
+        }
+    </table>
+</div>

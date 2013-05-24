@@ -12,6 +12,7 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="StoreSurveyModel.User">
         <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="RoleID" ColumnName="RoleID" />
           <ScalarProperty Name="Name" ColumnName="Name" />

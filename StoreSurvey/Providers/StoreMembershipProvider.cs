@@ -169,6 +169,7 @@ namespace StoreSurvey.Providers
 
             string hash = FormsAuthentication.HashPasswordForStoringInConfigFile(password.Trim(), "md5");
 
+        
             return this.repository.GetAllUsers().Any(user => (user.UserName == username.Trim()) && (user.Password == hash));
         }
 

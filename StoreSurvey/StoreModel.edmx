@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="StoreSurveyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="StoreSurveyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="StoreSurveyModelStoreContainer">
           <EntitySet Name="Role" EntityType="StoreSurveyModel.Store.Role" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="User" EntityType="StoreSurveyModel.Store.User" store:Type="Tables" Schema="dbo" />
@@ -30,6 +30,7 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="30" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="int" />
         </EntityType>
         <Association Name="FK_User_Role">
           <End Role="Role" Type="StoreSurveyModel.Store.Role" Multiplicity="1" />
@@ -43,8 +44,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="StoreSurveyModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -75,6 +75,7 @@
           <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Role" Relationship="StoreSurveyModel.FK_User_Role" FromRole="User" ToRole="Role" />
+          <Property Type="Int32" Name="Active" Nullable="true" />
         </EntityType>
         <Association Name="FK_User_Role">
           <End Role="Role" Type="StoreSurveyModel.Role" Multiplicity="1" />
@@ -99,7 +100,8 @@
             <ScalarProperty Name="Name" ColumnName="Name" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="StoreSurveyModel.User"><MappingFragment StoreEntitySet="User">
-            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
             <ScalarProperty Name="RoleID" ColumnName="RoleID" />
             <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -122,6 +124,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

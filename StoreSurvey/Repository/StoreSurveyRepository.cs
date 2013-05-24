@@ -135,7 +135,7 @@ namespace StoreSurvey.Repository
             if (UserExists(user))
                 throw new ArgumentException(TooManyUser);
 
-            entities.Users.AddObject(user);
+            entities.Users.Add(user);
         }
 
         public void CreateUser(string username, string name, string password, string email, string roleName)
@@ -161,7 +161,8 @@ namespace StoreSurvey.Repository
                 Name = name,
                 Password = FormsAuthentication.HashPasswordForStoringInConfigFile(password.Trim(), "md5"),
                 Email = email,
-                RoleID = role.ID
+                RoleID = role.ID,
+                Active = 1
             };
 
             try
@@ -187,7 +188,7 @@ namespace StoreSurvey.Repository
             if (!UserExists(user))
                 throw new ArgumentException(MissingUser);
 
-            entities.Users.DeleteObject(user);
+            entities.Users.Remove(user);
         }
 
         public void DeleteUser(string userName)
@@ -200,7 +201,7 @@ namespace StoreSurvey.Repository
             if (RoleExists(role))
                 throw new ArgumentException(TooManyRole);
 
-            entities.Roles.AddObject(role);
+            entities.Roles.Add(role);
         }
 
         public void AddRole(string roleName)
@@ -221,7 +222,7 @@ namespace StoreSurvey.Repository
             if (GetUsersForRole(role).Count() > 0)
                 throw new ArgumentException(AssignedRole);
 
-            entities.Roles.DeleteObject(role);
+            entities.Roles.Remove(role);
         }
 
         public void DeleteRole(string roleName)
