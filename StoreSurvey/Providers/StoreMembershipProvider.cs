@@ -170,7 +170,7 @@ namespace StoreSurvey.Providers
             string hash = FormsAuthentication.HashPasswordForStoringInConfigFile(password.Trim(), "md5");
 
         
-            return this.repository.GetAllUsers().Any(user => (user.UserName == username.Trim()) && (user.Password == hash));
+            return this.repository.GetAllUsers().Any(user => (user.UserName == username.Trim()) && (user.Password == hash) && (user.Active == 1));
         }
 
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)

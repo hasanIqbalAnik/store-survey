@@ -9,7 +9,8 @@ using StoreSurvey;
 using StoreSurvey.Implementations;
 
 namespace StoreSurvey.Controllers
-{ 
+{
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private StoreSurveyEntities db = new StoreSurveyEntities();
@@ -52,12 +53,12 @@ namespace StoreSurvey.Controllers
         [HttpPost]
         public ActionResult Create(User user)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && this.userService.CheckDuplicate(user) == false)
             {
                 this.userService.CreateUser(user);
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index");
             }
-
+            ModelState.AddModelError(string.Empty,"Username or Email is taken. They should be uniuqe.");
             ViewBag.RoleID = new SelectList(db.Roles, "ID", "Name", user.RoleID);
             return View(user);
         }

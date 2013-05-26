@@ -10,6 +10,7 @@ using StoreSurvey.Providers;
 
 namespace StoreSurvey.Controllers
 {
+    
     public class AccountController : Controller
     {
         public StoreMembershipProvider MembershipService { get; set; }
@@ -26,7 +27,7 @@ namespace StoreSurvey.Controllers
             base.Initialize(requestContext);
 
         }
-
+        
         public ActionResult LogOn()
         {
             return View();

@@ -1,4 +1,9 @@
 ﻿<!DOCTYPE html>
+@{
+    var userName = User.Identity.Name;
+    var role = Roles.GetRolesForUser(userName).FirstOrDefault();
+    
+}
 <html>
 <head>
     <title>@ViewBag.Title</title>
@@ -7,6 +12,14 @@
     <link href="@Url.Content("~/Content/bootstrap/css/bootstrap-responsive.min.css")" rel="stylesheet"
         type="text/css" />
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            console.log("@role");
+        if("@role" != "Admin")
+        {
+           $(".well").hide();
+        }
+        
+        </script>
 </head>
 <body>
     <div class="container-fluid">
