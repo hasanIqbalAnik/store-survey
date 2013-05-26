@@ -19,7 +19,12 @@ namespace StoreSurvey.Controllers
 
         public ViewResult Index()
         {
-            var users = db.Users.Include("Role");
+            var users = db.Users.Include("Role").Where(u=> u.Active.Value==1);
+            return View(users.ToList());
+        }
+        public ActionResult LockedUsers() 
+        {
+            var users = db.Users.Include("Role").Where(u => u.Active.Value == 0);
             return View(users.ToList());
         }
 
@@ -73,7 +78,7 @@ namespace StoreSurvey.Controllers
         [HttpPost]
         public ActionResult Edit(User user)
         {
-           
+            this.userService.UpdateUser(user);
             ViewBag.RoleID = new SelectList(db.Roles, "ID", "Name", user.RoleID);
             return View(user);
         }
@@ -99,10 +104,24 @@ namespace StoreSurvey.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult LockUser(string userId) 
+        {
+            this.userService.LockUser(Convert.ToInt32(userId));
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult UnLockUser(string userId)
+        {
+            this.userService.UnLockUser(Convert.ToInt32(userId));
+            return RedirectToAction("Index");
+        }
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
             base.Dispose(disposing);
         }
+
+
     }
 }

@@ -15,6 +15,7 @@ namespace StoreSurvey.Interfaces
          User UpdateUser(User user);
 
          void LockUser(int userId);
+         void UnLockUser(int userId);
          void ResetUserPassword(User user);
     }
 }

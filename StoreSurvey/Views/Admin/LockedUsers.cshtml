@@ -5,7 +5,7 @@
 <script type="text/javascript">
     function fn(userId) {
 
-        $.post('@Url.Action("LockUser","Admin")',
+        $.post('@Url.Action("UnLockUser","Admin")',
     {
         "userId": userId
     },
@@ -37,9 +37,12 @@
         <th>
             Actions
         </th>
+        
         </tr>
+        
         @foreach (StoreSurvey.User user in Model)
         {
+            
             <tr>
                 <td>
                     @user.Name
@@ -57,10 +60,11 @@
                     @user.Active
                 </td>
                 <td>
-                    <a href="#"  class="btn" style="text-decoration:none" id="lock" onclick=fn(@user.ID)>Lock</a> 
-                    <a href="/Admin/Edit/@user.ID" class="btn" style="text-decoration:none" id="edit"> Edit</a>
+                    <a href="#"  class="btn" style="text-decoration:none" id="lock" onclick=fn(@user.ID)>UnLock</a> 
+                    <a href="#" class="btn" style="text-decoration:none" id="edit"> Edit</a>
                 </td>
             </tr>    
         }
+        <tr>@if (Model.Count() == 0) { <text>No items to show</text>}</tr>
     </table>
 </div>

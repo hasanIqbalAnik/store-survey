@@ -42,8 +42,13 @@ namespace StoreSurvey.Implementations
         }
         public User UpdateUser(User userToUpdate)
         {
+
             var user = this.GetUserById(userToUpdate.ID);
+            
             user.Name = userToUpdate.Name;
+            user.RoleID = userToUpdate.RoleID;
+            user.Email = userToUpdate.Email;
+            user.Active = 1;
             user.Password = userToUpdate.Password;
             this._db.SaveChanges();
 
@@ -64,5 +69,12 @@ namespace StoreSurvey.Implementations
 
         }
 
+
+        public void UnLockUser(int userId)
+        {
+            var user = GetUserById(userId);
+            user.Active = 1;
+            _db.SaveChanges();
+        }
     }
 }
