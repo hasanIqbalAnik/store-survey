@@ -7,6 +7,7 @@
       <End Role="Role" EntitySet="Roles" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
+    <EntitySet Name="Shops" EntityType="StoreSurveyModel.Shop" />
   </EntityContainer>
   <EntityType Name="Role">
     <Key>
@@ -41,4 +42,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Shop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Double" Name="SLNO" />
+    <Property Type="String" Name="Region" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Territory" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Town" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShopName" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShopAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ShopType" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="SLAB" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Phon" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DMS_CODE" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

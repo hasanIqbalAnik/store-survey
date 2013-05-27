@@ -65,9 +65,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -80,6 +82,9 @@
     <Compile Include="Providers\StoreRoleProvider.cs" />
     <Compile Include="Repository\StoreSurveyRepository.cs" />
     <Compile Include="Role.cs">
+      <DependentUpon>StoreModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Shop.cs">
       <DependentUpon>StoreModels.tt</DependentUpon>
     </Compile>
     <Compile Include="StoreModel.Designer.cs">
@@ -136,7 +141,13 @@
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
+    <Content Include="Content\bootstrap-fileupload\bootstrap-fileupload.css" />
+    <Content Include="Scripts\bootstrap-fileupload\bootstrap-fileupload.js" />
+    <Content Include="Content\bootstrap-fileupload\bootstrap-fileupload.min.css" />
+    <Content Include="Scripts\bootstrap-fileupload\bootstrap-fileupload.min.js" />
     <Content Include="Scripts\bootstrap\bootstrap-confirm.js" />
+    <Content Include="Scripts\bootstrap\bootstrap-filestyle.min.js" />
+    <Content Include="Scripts\bootstrap\bootstrap.file-input.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
@@ -180,7 +191,11 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\uploads\" />
+    <Folder Include="Areas\Api\Controllers\" />
+    <Folder Include="Areas\Api\Models\" />
+    <Folder Include="Areas\Api\Views\Shared\" />
+    <Folder Include="uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -207,6 +222,7 @@
     <Content Include="Views\Admin\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Api\Views\Web.config" />
     <None Include="StoreModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>StoreModels.Context.cs</LastGenOutput>
@@ -216,6 +232,12 @@
       <LastGenOutput>StoreModels.cs</LastGenOutput>
     </None>
     <Content Include="Views\Admin\LockedUsers.cshtml" />
+    <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\Shop\Details.cshtml" />
+    <Content Include="Views\Shop\Create.cshtml" />
+    <Content Include="Views\Shop\Edit.cshtml" />
+    <Content Include="Views\Shop\Delete.cshtml" />
+    <Content Include="Views\Admin\FileUpload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

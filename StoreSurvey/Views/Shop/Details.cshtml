@@ -1,0 +1,65 @@
+﻿@model StoreSurvey.Shop
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Shop</legend>
+
+    <div class="display-label">SLNO</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SLNO)
+    </div>
+
+    <div class="display-label">Region</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Region)
+    </div>
+
+    <div class="display-label">Territory</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Territory)
+    </div>
+
+    <div class="display-label">Town</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Town)
+    </div>
+
+    <div class="display-label">ShopName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ShopName)
+    </div>
+
+    <div class="display-label">ShopAddress</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ShopAddress)
+    </div>
+
+    <div class="display-label">ShopType</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ShopType)
+    </div>
+
+    <div class="display-label">SLAB</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SLAB)
+    </div>
+
+    <div class="display-label">Phon</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phon)
+    </div>
+
+    <div class="display-label">DMS_CODE</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DMS_CODE)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

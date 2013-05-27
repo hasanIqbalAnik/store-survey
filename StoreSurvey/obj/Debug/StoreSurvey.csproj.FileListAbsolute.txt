@@ -1,7 +1,7 @@
-c:\users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\bin\StoreSurvey.dll
-c:\users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\bin\StoreSurvey.pdb
-c:\users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\bin\EntityFramework.dll
-c:\users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\bin\EntityFramework.xml
-c:\users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\obj\Debug\ResolveAssemblyReference.cache
-c:\users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\obj\Debug\StoreSurvey.dll
-c:\users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\obj\Debug\StoreSurvey.pdb
+C:\Users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\bin\StoreSurvey.dll
+C:\Users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\bin\StoreSurvey.pdb
+C:\Users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\bin\EntityFramework.dll
+C:\Users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\bin\EntityFramework.xml
+C:\Users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\obj\Debug\StoreSurvey.dll
+C:\Users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\obj\Debug\StoreSurvey.pdb

@@ -7,6 +7,21 @@
     <Schema Namespace="StoreSurveyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="StoreSurveyModelStoreContainer">
           <EntitySet Name="Role" EntityType="StoreSurveyModel.Store.Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Shop" EntityType="StoreSurveyModel.Store.Shop" store:Type="Tables" store:Schema="dbo" store:Name="Shop">
+            <DefiningQuery>SELECT 
+      [Shop].[Id] AS [Id], 
+      [Shop].[SLNO] AS [SLNO], 
+      [Shop].[Region] AS [Region], 
+      [Shop].[Territory] AS [Territory], 
+      [Shop].[Town] AS [Town], 
+      [Shop].[ShopName] AS [ShopName], 
+      [Shop].[ShopAddress] AS [ShopAddress], 
+      [Shop].[ShopType] AS [ShopType], 
+      [Shop].[SLAB] AS [SLAB], 
+      [Shop].[Phon] AS [Phon], 
+      [Shop].[DMS_CODE] AS [DMS_CODE]
+      FROM [dbo].[Shop] AS [Shop]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="User" EntityType="StoreSurveyModel.Store.User" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_User_Role" Association="StoreSurveyModel.Store.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
@@ -19,6 +34,25 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'StoreSurvey.dbo.Shop' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SLNO" Type="float" />
+          <Property Name="Region" Type="nvarchar" MaxLength="255" />
+          <Property Name="Territory" Type="nvarchar" MaxLength="255" />
+          <Property Name="Town" Type="nvarchar" MaxLength="255" />
+          <Property Name="ShopName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ShopAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="ShopType" Type="nvarchar" MaxLength="255" />
+          <Property Name="SLAB" Type="nvarchar" MaxLength="255" />
+          <Property Name="Phon" Type="nvarchar" MaxLength="255" />
+          <Property Name="DMS_CODE" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -55,6 +89,7 @@
             <End Role="Role" EntitySet="Roles" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="Shops" EntityType="StoreSurveyModel.Shop" />
         </EntityContainer>
         <EntityType Name="Role">
           <Key>
@@ -89,6 +124,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Double" Name="SLNO" />
+          <Property Type="String" Name="Region" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Territory" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Town" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShopName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShopAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShopType" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SLAB" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phon" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DMS_CODE" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -108,6 +159,23 @@
             <ScalarProperty Name="Password" ColumnName="Password" />
             <ScalarProperty Name="Email" ColumnName="Email" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Shops">
+            <EntityTypeMapping TypeName="StoreSurveyModel.Shop">
+              <MappingFragment StoreEntitySet="Shop">
+                <ScalarProperty Name="DMS_CODE" ColumnName="DMS_CODE" />
+                <ScalarProperty Name="Phon" ColumnName="Phon" />
+                <ScalarProperty Name="SLAB" ColumnName="SLAB" />
+                <ScalarProperty Name="ShopType" ColumnName="ShopType" />
+                <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="Territory" ColumnName="Territory" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="SLNO" ColumnName="SLNO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -136,6 +204,7 @@
           <ConnectorPoint PointX="2.25" PointY="2.1728417968750002" />
           <ConnectorPoint PointX="3" PointY="2.1728417968750002" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="StoreSurveyModel.Shop" Width="1.5" PointX="0.75" PointY="4.75" Height="3.1340950520833335" />
       </Diagram>
     </Diagrams>
   </Designer>

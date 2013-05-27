@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "FileUpload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(":file").filestyle({ classButton: "btn btn-primary" });
+    console.log("asdf");
+</script>
+<div class="row-fluid">
+    <div class="span9">
+        <form action="/Admin/FileUpload" method="post" enctype="multipart/form-data">
+
+<input type="file" class="filestyle" data-classButton="btn btn-primary" name="file">
+      
+        <button type="submit" class="btn btn-primary">
+            <i class="icon-plus icon-white"></i>Upload</button>
+        </form>
+    </div>
+</div>

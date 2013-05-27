@@ -22,5 +22,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Shops">
+      <EntityTypeMapping TypeName="StoreSurveyModel.Shop">
+        <MappingFragment StoreEntitySet="Shop">
+          <ScalarProperty Name="DMS_CODE" ColumnName="DMS_CODE" />
+          <ScalarProperty Name="Phon" ColumnName="Phon" />
+          <ScalarProperty Name="SLAB" ColumnName="SLAB" />
+          <ScalarProperty Name="ShopType" ColumnName="ShopType" />
+          <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+          <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+          <ScalarProperty Name="Town" ColumnName="Town" />
+          <ScalarProperty Name="Territory" ColumnName="Territory" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="SLNO" ColumnName="SLNO" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

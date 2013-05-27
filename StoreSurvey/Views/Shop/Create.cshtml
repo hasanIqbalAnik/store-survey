@@ -1,0 +1,105 @@
+﻿@model StoreSurvey.Shop
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Shop</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SLNO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SLNO)
+            @Html.ValidationMessageFor(model => model.SLNO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Region)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Region)
+            @Html.ValidationMessageFor(model => model.Region)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Territory)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Territory)
+            @Html.ValidationMessageFor(model => model.Territory)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Town)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Town)
+            @Html.ValidationMessageFor(model => model.Town)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShopName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShopName)
+            @Html.ValidationMessageFor(model => model.ShopName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShopAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShopAddress)
+            @Html.ValidationMessageFor(model => model.ShopAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ShopType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ShopType)
+            @Html.ValidationMessageFor(model => model.ShopType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SLAB)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SLAB)
+            @Html.ValidationMessageFor(model => model.SLAB)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Phon)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Phon)
+            @Html.ValidationMessageFor(model => model.Phon)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DMS_CODE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DMS_CODE)
+            @Html.ValidationMessageFor(model => model.DMS_CODE)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
