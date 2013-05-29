@@ -41,6 +41,7 @@ namespace StoreSurvey.Controllers
         {
             if (ModelState.IsValid)
             {
+                Session["region"] = model.Region;
                 if (MembershipService.ValidateUser(model.UserName, model.Password))
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);

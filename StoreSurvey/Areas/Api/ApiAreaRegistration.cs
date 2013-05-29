@@ -14,6 +14,19 @@ namespace StoreSurvey.Areas.Api
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
+
+            context.MapRoute(
+               "ListShopsAll",
+               "Api/Shops",
+               new
+               {
+                   controller = "Shops",
+                   action = "ShopsList",
+                   page = UrlParameter.Optional,
+                   count = UrlParameter.Optional
+               }
+           );
+
             context.MapRoute(
                 "Api_default",
                 "Api/{controller}/{action}/{id}",

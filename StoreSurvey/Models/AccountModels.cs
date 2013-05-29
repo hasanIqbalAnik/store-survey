@@ -40,6 +40,9 @@ namespace StoreSurvey.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        [Display(Name = "Region")]
+        public String Region { get; set; }
     }
 
     public class RegisterModel

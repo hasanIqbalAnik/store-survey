@@ -8,12 +8,15 @@ using System.Web.Mvc;
 using StoreSurvey;
 using StoreSurvey.Implementations;
 using System.IO;
+using NLog;
 
 namespace StoreSurvey.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         private StoreSurveyEntities db = new StoreSurveyEntities();
         private ImplUserService userService = new ImplUserService();
         //
@@ -21,6 +24,7 @@ namespace StoreSurvey.Controllers
 
         public ViewResult Index()
         {
+            logger.Debug("hello logs");
             var users = db.Users.Include("Role").Where(u=> u.Active.Value==1);
             return View(users.ToList());
         }

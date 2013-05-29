@@ -5,3 +5,7 @@ C:\Users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\bin\
 C:\Users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\obj\Debug\StoreSurvey.dll
 C:\Users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\obj\Debug\StoreSurvey.pdb
+C:\Users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\bin\NLog.config
+C:\Users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\bin\NLog.dll
+C:\Users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\bin\NLog.pdb
+C:\Users\anik\documents\visual studio 2010\Projects\StoreSurvey\StoreSurvey\bin\NLog.xml
