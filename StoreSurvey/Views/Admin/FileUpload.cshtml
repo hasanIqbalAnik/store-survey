@@ -3,17 +3,37 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <script type="text/javascript">
-    $(":file").filestyle({ classButton: "btn btn-primary" });
-    console.log("asdf");
+    function fn() {
+        var file = $("#idFile").val();
+        $.ajax({
+        url: "/Admin/FileUpload",
+        type: "POST",
+        async: false,
+        cache: false,
+        data: ,
+
+        success: function (msg) {
+
+            if (msg == "ok")
+                $("#uploadProgress").hide();
+            else
+                alert("Error while uploading");
+
+        }
+        });
+    }
 </script>
+
 <div class="row-fluid">
     <div class="span9">
-        <form action="/Admin/FileUpload" method="post" enctype="multipart/form-data">
+      @*  <form method="post" enctype="multipart/form-data" id="uploader" onsubmit="return toSubmit();">*@
 
-<input type="file" class="filestyle" data-classButton="btn btn-primary" name="file"  accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+<input type="file" class="filestyle" data-classButton="btn btn-primary" name="file"  accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="idFile">
       
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary" id="idSubmit" onclick="fn()"><br/>
+
             <i class="icon-plus icon-white"></i>Upload</button>
-        </form>
+            
+        @*</form>*@
     </div>
 </div>

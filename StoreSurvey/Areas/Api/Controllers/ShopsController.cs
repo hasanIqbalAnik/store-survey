@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using StoreSurvey.Areas.Api.Models;
 using System.Web.Script.Serialization;
+using System.IO;
+using System.Text;
+
 
 namespace StoreSurvey.Areas.Api.Controllers
 {
@@ -19,27 +22,41 @@ namespace StoreSurvey.Areas.Api.Controllers
 
         }
 
+        //[HttpGet]
+        //public ActionResult ShopsList()
+        //{
+        //    System.IO.StreamWriter file = new System.IO.StreamWriter(Server.MapPath("~/downloads/test.txt"));
+                     
+            
+        //    var serializer = new JavaScriptSerializer();
+            
+        //    MemoryStream memoryStream = new MemoryStream();
+        //    TextWriter tw = new StreamWriter(memoryStream);
+
+        //    var shopList = shopsManager.GetAllShops();
+            
+        //    for (int i = 0; i < shopList.Count; i++)
+        //    {
+        //        //jsResult = jsResult +  serializer.Serialize(shopList[i]);
+        //        file.Write(serializer.Serialize(shopList[i]));
+        //        tw.Write(serializer.Serialize(shopList[i]));
+        //    }
+
+        //    file.Close();
+        //    tw.Flush();
+        //    tw.Close();
+
+        //    return File(memoryStream.GetBuffer(), "text/plain", "file.txt");
+        //    //return Json(jsResult, JsonRequestBehavior.AllowGet);
+
+        //}
+
         [HttpGet]
-        public JsonResult ShopsList()
+        public ActionResult ShopsList(String shopInfoFilePath)
         {
-            System.IO.StreamWriter file = new System.IO.StreamWriter(Server.MapPath("~/downloads/test.txt"));
-            
-
-            
-
-            string jsResult = null;
-            var serializer = new JavaScriptSerializer();
-
-            var shopList = shopsManager.GetAllShops();
-            for (int i = 0; i < shopList.Count; i++)
-            {
-                //jsResult = jsResult +  serializer.Serialize(shopList[i]);
-                file.Write(serializer.Serialize(shopList[i]));
-}
-
-            file.Close();
-            //return Json(jsResult, JsonRequestBehavior.AllowGet);
-            return null;
+            this.shopsManager.PostAllShops();
+            return View();
         }
+
     }
 }

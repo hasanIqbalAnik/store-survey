@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using StoreSurvey.Helpers;
+using System.IO;
+
 
 namespace StoreSurvey.Areas.Api.Models
 {
@@ -21,11 +24,16 @@ namespace StoreSurvey.Areas.Api.Models
 
         List<Shop> IShopsManager.PostAllShops()
         {
-            throw new NotImplementedException();
+            var filePath = HttpContext.Current.Server.MapPath("~/uploads/costing_ver1.xls");
+            List<Shop> allShops = ExcellHelper.ReadFile(filePath);
+            ExcellHelper exH = new ExcellHelper();
+
+            return null;
         }
 
         Shop IShopsManager.GetShopById(int shopId)
         {
+            
             throw new NotImplementedException();
         }
 

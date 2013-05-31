@@ -38,7 +38,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="SLNO" Type="float" />
+    <Property Name="SLNO" Type="nvarchar" MaxLength="255" />
     <Property Name="Region" Type="nvarchar" MaxLength="255" />
     <Property Name="Territory" Type="nvarchar" MaxLength="255" />
     <Property Name="Town" Type="nvarchar" MaxLength="255" />

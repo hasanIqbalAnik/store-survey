@@ -6,19 +6,65 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using StoreSurvey;
+using StoreSurvey.Implementations;
+using StoreSurvey.helpers;
 
+using PagedList;
 namespace StoreSurvey.Controllers
 { 
     public class ShopController : Controller
     {
-        private StoreSurveyEntities db = new StoreSurveyEntities();
-
+        private StoreSurveyEntities db = ShopSingleton.Instance._db;
+        ImplShopService shopService = new ImplShopService();
         //
         // GET: /Shop/
+        string regionFilterString = null;
+        string townFilterString = null;
+        string territoryFilterString = null;
+        string dmsCodeFilterString = null;
 
-        public ViewResult Index()
+        public ViewResult Index(string regionFilter, string townFilter, string territoryFilter, string dmsCodeFilter, int? page)
         {
-            return View(db.Shops.ToList());
+            if (Request.HttpMethod != "GET")
+            {
+                page = 1;
+            }
+
+
+            regionFilterString = regionFilter;
+            townFilterString = townFilter;
+            territoryFilterString = territoryFilter;
+            dmsCodeFilterString = dmsCodeFilter;
+
+            ViewBag.regionFilter = regionFilter ;
+            ViewBag.townFilter = townFilter;
+            ViewBag.territoryFilter = territoryFilter;
+            ViewBag.dmsCodeFilter = dmsCodeFilter;
+
+            
+            var students = db.Shops.OrderBy(m => m.Id).Take(1000);
+            if (!String.IsNullOrEmpty(regionFilterString))
+            {
+                students = students.Where(s => s.Region.ToUpper().Contains(regionFilterString.ToUpper()));
+            }
+
+            if (!String.IsNullOrEmpty(townFilterString))
+            {
+                students = students.Where(s => s.Town.ToUpper().Contains(townFilterString.ToUpper()));
+            }
+            if (!String.IsNullOrEmpty(territoryFilterString))
+            {
+                students = students.Where(s => s.Territory.ToUpper().Contains(territoryFilterString.ToUpper()));
+            }
+            if (!String.IsNullOrEmpty(dmsCodeFilterString))
+            {
+                students = students.Where(s => s.DMS_CODE.ToUpper().Contains(dmsCodeFilterString.ToUpper()));
+            }
+
+            
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(students.ToPagedList(pageNumber, pageSize));
         }
 
         //
@@ -99,10 +145,5 @@ namespace StoreSurvey.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
     }
 }

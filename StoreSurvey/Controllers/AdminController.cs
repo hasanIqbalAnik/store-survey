@@ -130,7 +130,20 @@ namespace StoreSurvey.Controllers
         [HttpPost]
         public ActionResult FileUpload(HttpPostedFileBase file)
         {
-            // Verify that the user selected a file
+            //for (int i = 0; i < Request.Files.Count; i++)
+            //{
+            //    HttpPostedFileBase file = Request.Files[i]; //Uploaded file
+            //    //Use the following properties to get file's name, size and MIMEType
+            //    int fileSize = file.ContentLength;
+            //    string fileName = file.FileName;
+            //    string mimeType = file.ContentType;
+            //    System.IO.Stream fileContent = file.InputStream;
+            //    //To save file, use SaveAs method
+            //    file.SaveAs(Server.MapPath("~/uploads/") + fileName); //File will be saved in application root
+            //}
+
+            
+             
             if (file != null && file.ContentLength > 0)
             {
                 // extract only the fielname
@@ -140,7 +153,7 @@ namespace StoreSurvey.Controllers
                 file.SaveAs(path);
             }
             // redirect back to the index action to show the form once again
-            return RedirectToAction("Index");
+            return Json("Uploaded " + Request.Files.Count + " files");
         }
 
         protected override void Dispose(bool disposing)

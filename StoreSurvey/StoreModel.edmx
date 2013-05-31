@@ -43,7 +43,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="SLNO" Type="float" />
+          <Property Name="SLNO" Type="nvarchar" MaxLength="255" />
           <Property Name="Region" Type="nvarchar" MaxLength="255" />
           <Property Name="Territory" Type="nvarchar" MaxLength="255" />
           <Property Name="Town" Type="nvarchar" MaxLength="255" />
@@ -129,7 +129,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Double" Name="SLNO" />
+          <Property Type="String" Name="SLNO" Nullable="true" />
           <Property Type="String" Name="Region" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Territory" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Town" MaxLength="255" FixedLength="false" Unicode="true" />
