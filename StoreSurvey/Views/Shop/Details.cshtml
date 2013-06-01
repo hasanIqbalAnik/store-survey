@@ -3,9 +3,12 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".well").hide();
+    });
+</script>
+<div class="span9">
 <fieldset>
     <legend>Shop</legend>
 
@@ -59,6 +62,7 @@
         @Html.DisplayFor(model => model.DMS_CODE)
     </div>
 </fieldset>
+</div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

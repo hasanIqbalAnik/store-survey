@@ -4,8 +4,12 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".well").hide();
+    });
+</script>
+<div class="span9">
 <h3>Are you sure you want to delete this?</h3>
 <fieldset>
     <legend>Shop</legend>
@@ -66,3 +70,4 @@
         @Html.ActionLink("Back to List", "Index")
     </p>
 }
+</div>

@@ -3,10 +3,9 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $(".well").hide();
-        console.log("asdfasdfsadfasdf");
-    });
+        });
 </script>
-@using (Html.BeginForm())
+@*@using (Html.BeginForm())
 {
     <p>
         Find by Region: @Html.TextBox("regionFilter", ViewBag.regionFilter as string)
@@ -19,7 +18,40 @@
         <input type="submit" value="Search" />
         
         </p>
-}
+}*@
+<table border="0">
+<form class="form-horizontal" action="/shop/index?asdf=Submit" method="post">
+    <tr>
+        <td>
+            <label>
+                Find By Region</label></td>
+        <td>
+            <input type="text" class="input-xlarge" name="regionFilter" /></td>
+        <td><label class="control-label">
+                Find By Town</label></td>
+        <td>
+            <input type="text" class="input-xlarge" name="townFilter" /></td>
+    </tr>
+    <tr>
+        <td>
+            <label class="control-label">
+                Find By Territory</label></td>
+        <td>
+            <input type="text" class="input-xlarge" name="territoryFilter"></td>
+        <td>
+            <label class="control-label">
+                Find by DMS Code</label></td>
+        <td>
+            <input type="text" class="input-xlarge" name="dmsCodeFilter"> </td>
+    </tr>
+    <tr><td><button type="submit" class="btn btn-primary">
+            Search</button></td>
+            </tr>
+    
+</form>
+</table>
+
+
 <div class="row-fluid span12">
     <table class="table table-striped">
         <tr>
@@ -90,9 +122,9 @@
                     @Html.DisplayFor(modelItem => item.DMS_CODE)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    <a href="/shop/Edit/@item.Id"><i class="icon-edit" title="Edit"></i></a><a href="/shop/Details/@item.Id">
+                        <i class="icon-info-sign" title="Details"></i></a><a href="/shop/Delete/@item.Id"><i
+                            class="icon-remove" title="Delete"></i></a>
                 </td>
             </tr>
         }
@@ -105,7 +137,7 @@
             of @Model.PageCount
             @if (Model.HasPreviousPage)
             {
-                @Html.ActionLink("<<", "Index", new { page = 1, sortOrder = ViewBag.CurrentSort, regionFilter = ViewBag.regionFilter, townFilter = ViewBag.townString, territoryFilter = ViewBag.territory, dmsCodeFilter=ViewBag.dmsCodeFilter })
+                @Html.ActionLink("<<", "Index", new { page = 1, sortOrder = ViewBag.CurrentSort, regionFilter = ViewBag.regionFilter, townFilter = ViewBag.townString, territoryFilter = ViewBag.territory, dmsCodeFilter = ViewBag.dmsCodeFilter })
                 @Html.Raw(" ");
                 @Html.ActionLink("< Prev", "Index", new { page = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, regionFilter = ViewBag.regionFilter, townFilter = ViewBag.townString, territoryFilter = ViewBag.territory, dmsCodeFilter = ViewBag.dmsCodeFilter })
             }
@@ -114,19 +146,20 @@
                 @:<<
         @Html.Raw(" ");
                 @:< Prev
-                }
+                                        }
             @if (Model.HasNextPage)
             {
-                @Html.ActionLink("Next >", "Index", new { page = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort,  regionFilter = ViewBag.regionFilter, townFilter = ViewBag.townString, territoryFilter = ViewBag.territory, dmsCodeFilter=ViewBag.dmsCodeFilter })
+                @Html.ActionLink("Next >", "Index", new { page = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, regionFilter = ViewBag.regionFilter, townFilter = ViewBag.townString, territoryFilter = ViewBag.territory, dmsCodeFilter = ViewBag.dmsCodeFilter })
                 @Html.Raw(" ");
-                @Html.ActionLink(">>", "Index", new { page = Model.PageCount, sortOrder = ViewBag.CurrentSort,  regionFilter = ViewBag.regionFilter, townFilter = ViewBag.townString, territoryFilter = ViewBag.territory, dmsCodeFilter=ViewBag.dmsCodeFilter})
+                @Html.ActionLink(">>", "Index", new { page = Model.PageCount, sortOrder = ViewBag.CurrentSort, regionFilter = ViewBag.regionFilter, townFilter = ViewBag.townString, territoryFilter = ViewBag.territory, dmsCodeFilter = ViewBag.dmsCodeFilter })
             }
             else
             {
                 @:Next >
         @Html.Raw(" ")
                 @:>>
-                }
+                                        }
         </div>
     </div>
 </div>
+
