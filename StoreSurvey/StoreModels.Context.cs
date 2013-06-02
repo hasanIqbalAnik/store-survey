@@ -22,5 +22,13 @@ namespace StoreSurvey
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Shop> Shops { get; set; }
+        public DbSet<AdditionalSku> AdditionalSkus { get; set; }
+        public DbSet<FixedDisplaySku> FixedDisplaySkus { get; set; }
+        public DbSet<HotSpot> HotSpots { get; set; }
+        public DbSet<MustHaveSku> MustHaveSkus { get; set; }
+        public DbSet<PointOfPurchase> PointOfPurchases { get; set; }
+        public DbSet<Questionnaire> Questionnaires { get; set; }
+        public DbSet<sysdiagram> sysdiagrams { get; set; }
+        public DbSet<WaveDisplaySku> WaveDisplaySkus { get; set; }
     }
 }

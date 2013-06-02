@@ -14,6 +14,11 @@ namespace StoreSurvey
     
     public partial class Shop
     {
+        public Shop()
+        {
+            this.Questionnaires = new HashSet<Questionnaire>();
+        }
+    
         // Primitive properties
     
         public int Id { get; set; }
@@ -27,6 +32,10 @@ namespace StoreSurvey
         public string SLAB { get; set; }
         public string Phon { get; set; }
         public string DMS_CODE { get; set; }
+    
+        // Navigation properties
+    
+        public virtual ICollection<Questionnaire> Questionnaires { get; set; }
     
     }
 }

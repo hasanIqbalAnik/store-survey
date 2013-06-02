@@ -124,6 +124,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdditionalSku.cs">
+      <DependentUpon>StoreModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
     <Compile Include="Areas\Api\Controllers\ShopsController.cs" />
     <Compile Include="Areas\Api\Models\ImplShopsManager.cs" />
@@ -133,20 +136,35 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="FixedDisplaySku.cs">
+      <DependentUpon>StoreModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="helpers\ExcellHelper.cs" />
     <Compile Include="helpers\ShopSingleton.cs" />
+    <Compile Include="HotSpot.cs">
+      <DependentUpon>StoreModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Implementations\ImplShopService.cs" />
     <Compile Include="Implementations\ImplUserService.cs" />
     <Compile Include="Interfaces\IShopService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CustomMembershipProvider.cs" />
+    <Compile Include="MustHaveSku.cs">
+      <DependentUpon>StoreModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PointOfPurchase.cs">
+      <DependentUpon>StoreModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\StoreMembershipProvider.cs" />
     <Compile Include="Providers\StoreRoleProvider.cs" />
+    <Compile Include="Questionnaire.cs">
+      <DependentUpon>StoreModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repository\StoreSurveyRepository.cs" />
     <Compile Include="Role.cs">
       <DependentUpon>StoreModels.tt</DependentUpon>
@@ -169,7 +187,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StoreModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>StoreModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
+      <DependentUpon>StoreModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaveDisplaySku.cs">
       <DependentUpon>StoreModels.tt</DependentUpon>
     </Compile>
   </ItemGroup>
