@@ -1,0 +1,119 @@
+﻿@model StoreSurvey.Shop
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".well").hide();
+    });
+</script>
+<div class="span9">
+<h3>Are you sure you want to delete this?</h3>
+    <fieldset>
+        <legend>Shop</legend>
+
+        <table class="table table-striped">
+            <tr>
+                <td>
+                    <div class="display-label">SLNO</div></td>
+                <td>
+                    <div class="display-field">
+                        @Html.DisplayFor(model => model.SLNO)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="display-label">Region</div></td>
+                <td>
+                    <div class="display-field">
+                        @Html.DisplayFor(model => model.Region)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="display-label">Territory</div></td>
+                
+                <td><div class="display-field">
+                        @Html.DisplayFor(model => model.Territory)
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <div class="display-label">Town</div></td>
+                <td>
+                    <div class="display-field">
+                        @Html.DisplayFor(model => model.Town)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="display-label">ShopName</div></td>
+                <td>
+                    <div class="display-field">
+                        @Html.DisplayFor(model => model.ShopName)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="display-label">ShopAddress</div></td>
+                <td>
+                    <div class="display-field">
+                        @Html.DisplayFor(model => model.ShopAddress)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="display-label">ShopType</div>
+                </td>
+                <td>
+                    <div class="display-field">
+                        @Html.DisplayFor(model => model.ShopType)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="display-label">SLAB</div></td>
+                <td>
+                    <div class="display-field">
+                        @Html.DisplayFor(model => model.SLAB)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="display-label">Phon</div></td>
+                <td>
+                    <div class="display-field">
+                        @Html.DisplayFor(model => model.Phon)
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="display-label">DMS_CODE</div></td>
+                <td>
+                    <div class="display-field">
+                        @Html.DisplayFor(model => model.DMS_CODE)
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" class="btn btn-danger" style="text-decoration: none;color: white" />
+        <a href="/Shop/Index" class="btn btn-primary" style="text-decoration: none;color: white">Back to List</a>
+    </p>
+}
+</div>

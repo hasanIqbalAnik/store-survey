@@ -1,0 +1,760 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StoreSurveyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="StoreSurveyModelStoreContainer">
+          <EntitySet Name="AdditionalSku" EntityType="StoreSurveyModel.Store.AdditionalSku" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FixedDisplaySku" EntityType="StoreSurveyModel.Store.FixedDisplaySku" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HotSpot" EntityType="StoreSurveyModel.Store.HotSpot" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MustHaveSku" EntityType="StoreSurveyModel.Store.MustHaveSku" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MustHaveSkusBasic" EntityType="StoreSurveyModel.Store.MustHaveSkusBasic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PointOfPurchase" EntityType="StoreSurveyModel.Store.PointOfPurchase" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Questionnaire" EntityType="StoreSurveyModel.Store.Questionnaire" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Role" EntityType="StoreSurveyModel.Store.Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Shop" EntityType="StoreSurveyModel.Store.Shop" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="StoreSurveyModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="StoreSurveyModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WaveDisplaySku" EntityType="StoreSurveyModel.Store.WaveDisplaySku" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_AdditionalSku_MustHaveSku" Association="StoreSurveyModel.Store.FK_AdditionalSku_MustHaveSku">
+            <End Role="MustHaveSku" EntitySet="MustHaveSku" />
+            <End Role="AdditionalSku" EntitySet="AdditionalSku" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FixedDisplaySku_MustHaveSku" Association="StoreSurveyModel.Store.FK_FixedDisplaySku_MustHaveSku">
+            <End Role="MustHaveSku" EntitySet="MustHaveSku" />
+            <End Role="FixedDisplaySku" EntitySet="FixedDisplaySku" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotSpot_Questionnaire" Association="StoreSurveyModel.Store.FK_HotSpot_Questionnaire">
+            <End Role="Questionnaire" EntitySet="Questionnaire" />
+            <End Role="HotSpot" EntitySet="HotSpot" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PointOfPurchase_Questionnaire" Association="StoreSurveyModel.Store.FK_PointOfPurchase_Questionnaire">
+            <End Role="Questionnaire" EntitySet="Questionnaire" />
+            <End Role="PointOfPurchase" EntitySet="PointOfPurchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questionnaire_Shop" Association="StoreSurveyModel.Store.FK_Questionnaire_Shop">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="Questionnaire" EntitySet="Questionnaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="StoreSurveyModel.Store.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaveDisplaySku_MustHaveSku" Association="StoreSurveyModel.Store.FK_WaveDisplaySku_MustHaveSku">
+            <End Role="MustHaveSku" EntitySet="MustHaveSku" />
+            <End Role="WaveDisplaySku" EntitySet="WaveDisplaySku" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AdditionalSku">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="mustHaveSkuId" Type="int" Nullable="false" />
+          <Property Name="formId" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="FixedDisplaySku">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="groupId" Type="int" />
+          <Property Name="availability" Type="int" />
+          <Property Name="totalDisplayCount" Type="int" />
+          <Property Name="faceUpCount" Type="int" />
+          <Property Name="sequence" Type="int" />
+          <Property Name="ored" Type="int" />
+          <Property Name="mustHaveSkuId" Type="int" Nullable="false" />
+          <Property Name="formId" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="HotSpot">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="head" Type="nvarchar" MaxLength="255" />
+          <Property Name="description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="compliance" Type="int" />
+          <Property Name="questionnaireId" Type="int" Nullable="false" />
+          <Property Name="formId" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="MustHaveSku">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="formId" Type="nvarchar" MaxLength="55" />
+          <Property Name="skus" Type="nvarchar" MaxLength="500" />
+          <Property Name="skuCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="shopType" Type="nvarchar" MaxLength="200" />
+          <Property Name="count" Type="int" />
+        </EntityType>
+        <EntityType Name="MustHaveSkusBasic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="skus" Type="nvarchar" MaxLength="300" />
+          <Property Name="skuCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="shopType" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PointOfPurchase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" />
+          <Property Name="description" Type="nvarchar" MaxLength="1000" />
+          <Property Name="availability" Type="int" />
+          <Property Name="questionnaireId" Type="int" Nullable="false" />
+          <Property Name="formId" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Questionnaire">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="shopId" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="cellNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="imageUrl1" Type="nvarchar" MaxLength="255" />
+          <Property Name="imageUrl2" Type="nvarchar" MaxLength="255" />
+          <Property Name="longitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="latitude" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="formId" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SLNO" Type="nvarchar" MaxLength="255" />
+          <Property Name="Region" Type="nvarchar" MaxLength="255" />
+          <Property Name="Territory" Type="nvarchar" MaxLength="255" />
+          <Property Name="Town" Type="nvarchar" MaxLength="255" />
+          <Property Name="ShopName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ShopAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="ShopType" Type="nvarchar" MaxLength="255" />
+          <Property Name="SLAB" Type="nvarchar" MaxLength="255" />
+          <Property Name="Phon" Type="nvarchar" MaxLength="255" />
+          <Property Name="DMS_CODE" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="30" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="int" />
+        </EntityType>
+        <EntityType Name="WaveDisplaySku">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="sequence" Type="int" />
+          <Property Name="ored" Type="int" />
+          <Property Name="mustHaveSkuId" Type="int" Nullable="false" />
+          <Property Name="formId" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK_AdditionalSku_MustHaveSku">
+          <End Role="MustHaveSku" Type="StoreSurveyModel.Store.MustHaveSku" Multiplicity="1" />
+          <End Role="AdditionalSku" Type="StoreSurveyModel.Store.AdditionalSku" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MustHaveSku">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdditionalSku">
+              <PropertyRef Name="mustHaveSkuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FixedDisplaySku_MustHaveSku">
+          <End Role="MustHaveSku" Type="StoreSurveyModel.Store.MustHaveSku" Multiplicity="1" />
+          <End Role="FixedDisplaySku" Type="StoreSurveyModel.Store.FixedDisplaySku" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MustHaveSku">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FixedDisplaySku">
+              <PropertyRef Name="mustHaveSkuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotSpot_Questionnaire">
+          <End Role="Questionnaire" Type="StoreSurveyModel.Store.Questionnaire" Multiplicity="1" />
+          <End Role="HotSpot" Type="StoreSurveyModel.Store.HotSpot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionnaire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HotSpot">
+              <PropertyRef Name="questionnaireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PointOfPurchase_Questionnaire">
+          <End Role="Questionnaire" Type="StoreSurveyModel.Store.Questionnaire" Multiplicity="1" />
+          <End Role="PointOfPurchase" Type="StoreSurveyModel.Store.PointOfPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionnaire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PointOfPurchase">
+              <PropertyRef Name="questionnaireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questionnaire_Shop">
+          <End Role="Shop" Type="StoreSurveyModel.Store.Shop" Multiplicity="1" />
+          <End Role="Questionnaire" Type="StoreSurveyModel.Store.Questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Questionnaire">
+              <PropertyRef Name="shopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="StoreSurveyModel.Store.Role" Multiplicity="1" />
+          <End Role="User" Type="StoreSurveyModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaveDisplaySku_MustHaveSku">
+          <End Role="MustHaveSku" Type="StoreSurveyModel.Store.MustHaveSku" Multiplicity="1" />
+          <End Role="WaveDisplaySku" Type="StoreSurveyModel.Store.WaveDisplaySku" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MustHaveSku">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WaveDisplaySku">
+              <PropertyRef Name="mustHaveSkuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StoreSurveyModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="StoreSurveyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Roles" EntityType="StoreSurveyModel.Role" />
+          <EntitySet Name="Users" EntityType="StoreSurveyModel.User" />
+          <AssociationSet Name="FK_User_Role" Association="StoreSurveyModel.FK_User_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Shops" EntityType="StoreSurveyModel.Shop" />
+          <EntitySet Name="AdditionalSkus" EntityType="StoreSurveyModel.AdditionalSku" />
+          <EntitySet Name="FixedDisplaySkus" EntityType="StoreSurveyModel.FixedDisplaySku" />
+          <EntitySet Name="HotSpots" EntityType="StoreSurveyModel.HotSpot" />
+          <EntitySet Name="MustHaveSkus" EntityType="StoreSurveyModel.MustHaveSku" />
+          <EntitySet Name="PointOfPurchases" EntityType="StoreSurveyModel.PointOfPurchase" />
+          <EntitySet Name="Questionnaires" EntityType="StoreSurveyModel.Questionnaire" />
+          <EntitySet Name="sysdiagrams" EntityType="StoreSurveyModel.sysdiagram" />
+          <EntitySet Name="WaveDisplaySkus" EntityType="StoreSurveyModel.WaveDisplaySku" />
+          <AssociationSet Name="FK_AdditionalSku_MustHaveSku" Association="StoreSurveyModel.FK_AdditionalSku_MustHaveSku">
+            <End Role="MustHaveSku" EntitySet="MustHaveSkus" />
+            <End Role="AdditionalSku" EntitySet="AdditionalSkus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FixedDisplaySku_MustHaveSku" Association="StoreSurveyModel.FK_FixedDisplaySku_MustHaveSku">
+            <End Role="MustHaveSku" EntitySet="MustHaveSkus" />
+            <End Role="FixedDisplaySku" EntitySet="FixedDisplaySkus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotSpot_Questionnaire" Association="StoreSurveyModel.FK_HotSpot_Questionnaire">
+            <End Role="Questionnaire" EntitySet="Questionnaires" />
+            <End Role="HotSpot" EntitySet="HotSpots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaveDisplaySku_MustHaveSku" Association="StoreSurveyModel.FK_WaveDisplaySku_MustHaveSku">
+            <End Role="MustHaveSku" EntitySet="MustHaveSkus" />
+            <End Role="WaveDisplaySku" EntitySet="WaveDisplaySkus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PointOfPurchase_Questionnaire" Association="StoreSurveyModel.FK_PointOfPurchase_Questionnaire">
+            <End Role="Questionnaire" EntitySet="Questionnaires" />
+            <End Role="PointOfPurchase" EntitySet="PointOfPurchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questionnaire_Shop" Association="StoreSurveyModel.FK_Questionnaire_Shop">
+            <End Role="Shop" EntitySet="Shops" />
+            <End Role="Questionnaire" EntitySet="Questionnaires" />
+          </AssociationSet>
+          <EntitySet Name="MustHaveSkusBasics" EntityType="StoreSurveyModel.MustHaveSkusBasic" />
+        </EntityContainer>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Users" Relationship="StoreSurveyModel.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Role" Relationship="StoreSurveyModel.FK_User_Role" FromRole="User" ToRole="Role" />
+          <Property Type="Int32" Name="Active" Nullable="true" />
+        </EntityType>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="StoreSurveyModel.Role" Multiplicity="1" />
+          <End Role="User" Type="StoreSurveyModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SLNO" Nullable="true" />
+          <Property Type="String" Name="Region" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Territory" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Town" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShopName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShopAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShopType" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SLAB" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phon" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DMS_CODE" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Questionnaires" Relationship="StoreSurveyModel.FK_Questionnaire_Shop" FromRole="Shop" ToRole="Questionnaire" />
+        </EntityType>
+        <EntityType Name="AdditionalSku">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="mustHaveSkuId" Nullable="false" />
+          <NavigationProperty Name="MustHaveSku" Relationship="StoreSurveyModel.FK_AdditionalSku_MustHaveSku" FromRole="AdditionalSku" ToRole="MustHaveSku" />
+          <Property Type="String" Name="formId" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FixedDisplaySku">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="groupId" />
+          <Property Type="Int32" Name="availability" />
+          <Property Type="Int32" Name="totalDisplayCount" />
+          <Property Type="Int32" Name="faceUpCount" />
+          <Property Type="Int32" Name="sequence" />
+          <Property Type="Int32" Name="ored" />
+          <Property Type="Int32" Name="mustHaveSkuId" Nullable="false" />
+          <NavigationProperty Name="MustHaveSku" Relationship="StoreSurveyModel.FK_FixedDisplaySku_MustHaveSku" FromRole="FixedDisplaySku" ToRole="MustHaveSku" />
+          <Property Type="String" Name="formId" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HotSpot">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="head" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="description" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="compliance" />
+          <Property Type="Int32" Name="questionnaireId" Nullable="false" />
+          <NavigationProperty Name="Questionnaire" Relationship="StoreSurveyModel.FK_HotSpot_Questionnaire" FromRole="HotSpot" ToRole="Questionnaire" />
+          <Property Type="String" Name="formId" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MustHaveSku">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="skus" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="skuCode" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdditionalSkus" Relationship="StoreSurveyModel.FK_AdditionalSku_MustHaveSku" FromRole="MustHaveSku" ToRole="AdditionalSku" />
+          <NavigationProperty Name="FixedDisplaySkus" Relationship="StoreSurveyModel.FK_FixedDisplaySku_MustHaveSku" FromRole="MustHaveSku" ToRole="FixedDisplaySku" />
+          <NavigationProperty Name="WaveDisplaySkus" Relationship="StoreSurveyModel.FK_WaveDisplaySku_MustHaveSku" FromRole="MustHaveSku" ToRole="WaveDisplaySku" />
+          <Property Type="String" Name="formId" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="shopType" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="count" />
+        </EntityType>
+        <EntityType Name="PointOfPurchase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="description" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="availability" />
+          <Property Type="Int32" Name="questionnaireId" Nullable="false" />
+          <NavigationProperty Name="Questionnaire" Relationship="StoreSurveyModel.FK_PointOfPurchase_Questionnaire" FromRole="PointOfPurchase" ToRole="Questionnaire" />
+          <Property Type="String" Name="formId" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Questionnaire">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="shopId" Nullable="false" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="date" />
+          <Property Type="String" Name="cellNo" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="imageUrl1" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="imageUrl2" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="longitude" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="latitude" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HotSpots" Relationship="StoreSurveyModel.FK_HotSpot_Questionnaire" FromRole="Questionnaire" ToRole="HotSpot" />
+          <NavigationProperty Name="PointOfPurchases" Relationship="StoreSurveyModel.FK_PointOfPurchase_Questionnaire" FromRole="Questionnaire" ToRole="PointOfPurchase" />
+          <NavigationProperty Name="Shop" Relationship="StoreSurveyModel.FK_Questionnaire_Shop" FromRole="Questionnaire" ToRole="Shop" />
+          <Property Type="String" Name="formId" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="principal_id" Nullable="false" />
+          <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="version" />
+          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="WaveDisplaySku">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="sequence" />
+          <Property Type="Int32" Name="ored" />
+          <Property Type="Int32" Name="mustHaveSkuId" Nullable="false" />
+          <NavigationProperty Name="MustHaveSku" Relationship="StoreSurveyModel.FK_WaveDisplaySku_MustHaveSku" FromRole="WaveDisplaySku" ToRole="MustHaveSku" />
+          <Property Type="String" Name="formId" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_AdditionalSku_MustHaveSku">
+          <End Type="StoreSurveyModel.MustHaveSku" Role="MustHaveSku" Multiplicity="1" />
+          <End Type="StoreSurveyModel.AdditionalSku" Role="AdditionalSku" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MustHaveSku">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdditionalSku">
+              <PropertyRef Name="mustHaveSkuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FixedDisplaySku_MustHaveSku">
+          <End Type="StoreSurveyModel.MustHaveSku" Role="MustHaveSku" Multiplicity="1" />
+          <End Type="StoreSurveyModel.FixedDisplaySku" Role="FixedDisplaySku" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MustHaveSku">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FixedDisplaySku">
+              <PropertyRef Name="mustHaveSkuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotSpot_Questionnaire">
+          <End Type="StoreSurveyModel.Questionnaire" Role="Questionnaire" Multiplicity="1" />
+          <End Type="StoreSurveyModel.HotSpot" Role="HotSpot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionnaire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HotSpot">
+              <PropertyRef Name="questionnaireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaveDisplaySku_MustHaveSku">
+          <End Type="StoreSurveyModel.MustHaveSku" Role="MustHaveSku" Multiplicity="1" />
+          <End Type="StoreSurveyModel.WaveDisplaySku" Role="WaveDisplaySku" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MustHaveSku">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WaveDisplaySku">
+              <PropertyRef Name="mustHaveSkuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PointOfPurchase_Questionnaire">
+          <End Type="StoreSurveyModel.Questionnaire" Role="Questionnaire" Multiplicity="1" />
+          <End Type="StoreSurveyModel.PointOfPurchase" Role="PointOfPurchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionnaire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PointOfPurchase">
+              <PropertyRef Name="questionnaireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questionnaire_Shop">
+          <End Type="StoreSurveyModel.Shop" Role="Shop" Multiplicity="1" />
+          <End Type="StoreSurveyModel.Questionnaire" Role="Questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Questionnaire">
+              <PropertyRef Name="shopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MustHaveSkusBasic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="skus" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="skuCode" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="shopType" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StoreSurveyModelStoreContainer" CdmEntityContainer="StoreSurveyEntities">
+          <EntitySetMapping Name="Roles"><EntityTypeMapping TypeName="StoreSurveyModel.Role"><MappingFragment StoreEntitySet="Role">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="StoreSurveyModel.User"><MappingFragment StoreEntitySet="User">
+            <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="UserName" ColumnName="UserName" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Shops">
+            <EntityTypeMapping TypeName="StoreSurveyModel.Shop">
+              <MappingFragment StoreEntitySet="Shop">
+                <ScalarProperty Name="DMS_CODE" ColumnName="DMS_CODE" />
+                <ScalarProperty Name="Phon" ColumnName="Phon" />
+                <ScalarProperty Name="SLAB" ColumnName="SLAB" />
+                <ScalarProperty Name="ShopType" ColumnName="ShopType" />
+                <ScalarProperty Name="ShopAddress" ColumnName="ShopAddress" />
+                <ScalarProperty Name="ShopName" ColumnName="ShopName" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="Territory" ColumnName="Territory" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="SLNO" ColumnName="SLNO" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdditionalSkus">
+            <EntityTypeMapping TypeName="StoreSurveyModel.AdditionalSku">
+              <MappingFragment StoreEntitySet="AdditionalSku">
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="mustHaveSkuId" ColumnName="mustHaveSkuId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FixedDisplaySkus">
+            <EntityTypeMapping TypeName="StoreSurveyModel.FixedDisplaySku">
+              <MappingFragment StoreEntitySet="FixedDisplaySku">
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="mustHaveSkuId" ColumnName="mustHaveSkuId" />
+                <ScalarProperty Name="ored" ColumnName="ored" />
+                <ScalarProperty Name="sequence" ColumnName="sequence" />
+                <ScalarProperty Name="faceUpCount" ColumnName="faceUpCount" />
+                <ScalarProperty Name="totalDisplayCount" ColumnName="totalDisplayCount" />
+                <ScalarProperty Name="availability" ColumnName="availability" />
+                <ScalarProperty Name="groupId" ColumnName="groupId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotSpots">
+            <EntityTypeMapping TypeName="StoreSurveyModel.HotSpot">
+              <MappingFragment StoreEntitySet="HotSpot">
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="questionnaireId" ColumnName="questionnaireId" />
+                <ScalarProperty Name="compliance" ColumnName="compliance" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="head" ColumnName="head" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MustHaveSkus">
+            <EntityTypeMapping TypeName="StoreSurveyModel.MustHaveSku">
+              <MappingFragment StoreEntitySet="MustHaveSku">
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="shopType" ColumnName="shopType" />
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="skuCode" ColumnName="skuCode" />
+                <ScalarProperty Name="skus" ColumnName="skus" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PointOfPurchases">
+            <EntityTypeMapping TypeName="StoreSurveyModel.PointOfPurchase">
+              <MappingFragment StoreEntitySet="PointOfPurchase">
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="questionnaireId" ColumnName="questionnaireId" />
+                <ScalarProperty Name="availability" ColumnName="availability" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questionnaires">
+            <EntityTypeMapping TypeName="StoreSurveyModel.Questionnaire">
+              <MappingFragment StoreEntitySet="Questionnaire">
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="imageUrl2" ColumnName="imageUrl2" />
+                <ScalarProperty Name="imageUrl1" ColumnName="imageUrl1" />
+                <ScalarProperty Name="cellNo" ColumnName="cellNo" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="shopId" ColumnName="shopId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="StoreSurveyModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WaveDisplaySkus">
+            <EntityTypeMapping TypeName="StoreSurveyModel.WaveDisplaySku">
+              <MappingFragment StoreEntitySet="WaveDisplaySku">
+                <ScalarProperty Name="formId" ColumnName="formId" />
+                <ScalarProperty Name="mustHaveSkuId" ColumnName="mustHaveSkuId" />
+                <ScalarProperty Name="ored" ColumnName="ored" />
+                <ScalarProperty Name="sequence" ColumnName="sequence" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MustHaveSkusBasics">
+            <EntityTypeMapping TypeName="StoreSurveyModel.MustHaveSkusBasic">
+              <MappingFragment StoreEntitySet="MustHaveSkusBasic">
+                <ScalarProperty Name="shopType" ColumnName="shopType" />
+                <ScalarProperty Name="skuCode" ColumnName="skuCode" />
+                <ScalarProperty Name="skus" ColumnName="skus" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="StoreModel">
+        <EntityTypeShape EntityType="StoreSurveyModel.Role" Width="1.5" PointX="0.75" PointY="1.375" Height="1.5956835937500002" IsExpanded="true" />
+        <EntityTypeShape EntityType="StoreSurveyModel.User" Width="1.5" PointX="3" PointY="1" Height="2.3648893229166674" IsExpanded="true" />
+        <AssociationConnector Association="StoreSurveyModel.FK_User_Role" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.1728417968750002" />
+          <ConnectorPoint PointX="3" PointY="2.1728417968750002" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="StoreSurveyModel.Shop" Width="1.5" PointX="0.75" PointY="4.75" Height="3.1340950520833335" />
+        <EntityTypeShape EntityType="StoreSurveyModel.AdditionalSku" Width="1.5" PointX="7.5" PointY="13.625" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="StoreSurveyModel.FixedDisplaySku" Width="1.5" PointX="7.5" PointY="16" Height="2.7494921875000014" />
+        <EntityTypeShape EntityType="StoreSurveyModel.HotSpot" Width="1.5" PointX="5.25" PointY="10.625" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="StoreSurveyModel.MustHaveSku" Width="1.5" PointX="5.25" PointY="16.125" Height="2.7494921875000031" />
+        <EntityTypeShape EntityType="StoreSurveyModel.PointOfPurchase" Width="1.5" PointX="5.25" PointY="22.125" Height="2.172587890624996" />
+        <EntityTypeShape EntityType="StoreSurveyModel.Questionnaire" Width="1.5" PointX="3" PointY="15.75" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="StoreSurveyModel.sysdiagram" Width="1.5" PointX="3.375" PointY="4.75" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="StoreSurveyModel.WaveDisplaySku" Width="1.5" PointX="7.5" PointY="19.5" Height="1.9802864583333388" />
+        <AssociationConnector Association="StoreSurveyModel.FK_AdditionalSku_MustHaveSku" >
+          <ConnectorPoint PointX="6" PointY="16.125" />
+          <ConnectorPoint PointX="6" PointY="14.518992513020834" />
+          <ConnectorPoint PointX="7.5" PointY="14.518992513020834" />
+        </AssociationConnector>
+        <AssociationConnector Association="StoreSurveyModel.FK_FixedDisplaySku_MustHaveSku" >
+          <ConnectorPoint PointX="6.75" PointY="17.49974609375" />
+          <ConnectorPoint PointX="7.5" PointY="17.49974609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="StoreSurveyModel.FK_HotSpot_Questionnaire" >
+          <ConnectorPoint PointX="3.75" PointY="15.75" />
+          <ConnectorPoint PointX="3.75" PointY="11.7112939453125" />
+          <ConnectorPoint PointX="5.25" PointY="11.7112939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="StoreSurveyModel.FK_WaveDisplaySku_MustHaveSku" >
+          <ConnectorPoint PointX="6" PointY="18.874492187500003" />
+          <ConnectorPoint PointX="6" PointY="20.5862939453125" />
+          <ConnectorPoint PointX="7.5" PointY="20.5862939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="StoreSurveyModel.FK_PointOfPurchase_Questionnaire" >
+          <ConnectorPoint PointX="3.75" PointY="19.268697916666667" />
+          <ConnectorPoint PointX="3.75" PointY="23.211293945312498" />
+          <ConnectorPoint PointX="5.25" PointY="23.211293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="StoreSurveyModel.FK_Questionnaire_Shop" >
+          <ConnectorPoint PointX="1.5" PointY="8.076396484375" />
+          <ConnectorPoint PointX="1.5" PointY="17.509348958333334" />
+          <ConnectorPoint PointX="3" PointY="17.509348958333334" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="StoreSurveyModel.MustHaveSkusBasic" Width="1.5" PointX="5.375" PointY="0.75" Height="1.7879850260416674" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

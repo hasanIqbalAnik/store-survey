@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "FileUpload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<script type="text/javascript">
+    function fn() {
+        var file = $("#idFile").val();
+        $.ajax({
+        url: "/Admin/FileUpload",
+        type: "POST",
+        async: false,
+        cache: false,
+        data: ,
+
+        success: function (msg) {
+
+            if (msg == "ok")
+                $("#uploadProgress").hide();
+            else
+                alert("Error while uploading");
+
+        }
+        });
+    }
+</script>
+*@
+@{
+    if (ViewBag.sucessOrError != null)
+    {
+ 
+<div class="alert alert-success">
+    @ViewBag.sucessOrError
+</div>       
+    }
+}
+
+
+<div class="row-fluid">
+    <div class="span2"></div>
+    <div class="span9">
+        <form method="post" enctype="multipart/form-data" id="uploader">
+
+            <input type="file" class="filestyle" data-classButton="btn btn-primary" name="file"  accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="idFile">
+      
+            <input type="submit" class="btn btn-primary"/>
+            
+        </form>
+    </div>
+</div>

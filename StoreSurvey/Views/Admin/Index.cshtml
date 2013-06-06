@@ -1,0 +1,70 @@
+﻿@model IEnumerable<StoreSurvey.User>
+
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+
+
+<script type="text/javascript">
+    function fn(userId) {
+
+        $.post('@Url.Action("LockUser","Admin")',
+    {
+        "userId": userId
+    },
+    function (data) {
+        window.location.reload();
+    });
+    }
+</script>
+
+
+<div class="span9">
+    <table class="table table-striped">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            User Name
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Role
+        </th>
+        <th>
+            Active
+        </th>
+        <th>
+            Actions
+        </th>
+        </tr>
+        @foreach (StoreSurvey.User user in Model)
+        {
+            <tr>
+                <td>
+                    @user.Name
+                </td>
+                <td>
+                    @user.UserName
+                </td>
+                <td>
+                    @user.Email
+                </td>
+                <td>
+                    @user.Role.Name
+                </td>
+                <td>
+                    @user.Active
+                </td>
+                <td>
+                    <a href="#"  class="btn" style="text-decoration:none" id="lock" onclick=fn(@user.ID)>Lock</a> 
+                    <a href="/Admin/Edit/@user.ID" class="btn" style="text-decoration:none" id="edit"> Edit</a>
+                </td>
+            </tr>    
+        }
+    </table>
+</div>
+<div class="row-fluid">
+
