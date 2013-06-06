@@ -26,6 +26,12 @@ namespace StoreSurvey.Areas.Api.Controllers
         }
 
         [HttpGet]
+        public ActionResult GetShopCount()
+        {
+            return Json(shopsManager.GetAllShops().Count, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
         public ActionResult ShopsList(int? pageNum, int? chunkSize)
         {
             
