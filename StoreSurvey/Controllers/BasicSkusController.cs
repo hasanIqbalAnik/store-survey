@@ -9,7 +9,7 @@ using StoreSurvey;
 using StoreSurvey.helpers;
 
 namespace StoreSurvey.Controllers
-{ 
+{
     public class BasicSkusController : Controller
     {
         private StoreSurveyEntities db = ShopSingleton.Instance._db;
@@ -36,8 +36,23 @@ namespace StoreSurvey.Controllers
 
         public ActionResult Create()
         {
+
+            if (Session["shopTypes"] == null)
+            {
+
+                Session["shopTypes"] = (from m in this.db.Shops
+                                        select m.ShopType).Distinct().ToList();
+
+
+                ViewBag.shopTypesDropDown = new SelectList((List<String>)Session["shopTypes"], "shopType");
+            }
+            else
+            {
+                ViewBag.shopTypesDropDown = new SelectList((List<String>)Session["shopTypes"], "shopType");
+            }
+
             return View();
-        } 
+        }
 
         //
         // POST: /BasicSkus/Create
@@ -49,18 +64,31 @@ namespace StoreSurvey.Controllers
             {
                 db.MustHaveSkusBasics.Add(musthaveskusbasic);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index");
             }
 
             return View(musthaveskusbasic);
         }
-        
+
         //
         // GET: /BasicSkus/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             MustHaveSkusBasic musthaveskusbasic = db.MustHaveSkusBasics.Find(id);
+            if (Session["shopTypes"] == null)
+            {
+
+                Session["shopTypes"] = (from m in this.db.Shops
+                                        select m.ShopType).Distinct().ToList();
+
+
+                ViewBag.shopTypesDropDown = new SelectList((List<String>)Session["shopTypes"], "shopType");
+            }
+            else
+            {
+                ViewBag.shopTypesDropDown = new SelectList((List<String>)Session["shopTypes"], "shopType");
+            }
             return View(musthaveskusbasic);
         }
 
@@ -81,7 +109,7 @@ namespace StoreSurvey.Controllers
 
         //
         // GET: /BasicSkus/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             MustHaveSkusBasic musthaveskusbasic = db.MustHaveSkusBasics.Find(id);
@@ -93,13 +121,13 @@ namespace StoreSurvey.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
+        {
             MustHaveSkusBasic musthaveskusbasic = db.MustHaveSkusBasics.Find(id);
             db.MustHaveSkusBasics.Remove(musthaveskusbasic);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-   
+
     }
 }
