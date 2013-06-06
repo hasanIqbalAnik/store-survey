@@ -14,5 +14,11 @@ namespace StoreSurvey.Areas.Api.Models
         Shop PostShopById(Shop shop);
 
         Shop PutShop(Shop shop);
+
+        List<MustHaveSku> GetAllMustHaveSkus();
+        void PostAllMustHaveSkus(List<MustHaveSku> list);
+
+        List<MustHaveSkusBasic> GetAllMustHaveSkusBasic();
+        void PostAllMustHaveSkusBasic(List<MustHaveSkusBasic> list);
     }
 }

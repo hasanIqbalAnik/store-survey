@@ -9,6 +9,7 @@ using StoreSurvey;
 using StoreSurvey.Implementations;
 using System.IO;
 using NLog;
+using StoreSurvey.helpers;
 
 namespace StoreSurvey.Controllers
 {
@@ -17,14 +18,14 @@ namespace StoreSurvey.Controllers
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
-        private StoreSurveyEntities db = new StoreSurveyEntities();
+        private StoreSurveyEntities db = ShopSingleton.Instance._db;
         private ImplUserService userService = new ImplUserService();
         //
         // GET: /Admin/
 
         public ViewResult Index()
         {
-            logger.Debug("hello logs");
+            
             var users = db.Users.Include("Role").Where(u=> u.Active.Value==1);
             return View(users.ToList());
         }
@@ -158,11 +159,7 @@ namespace StoreSurvey.Controllers
             return View();
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
+
 
 
     }

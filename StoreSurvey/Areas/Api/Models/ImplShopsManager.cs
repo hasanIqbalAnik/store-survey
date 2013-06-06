@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using NLog;
 using StoreSurvey.Helpers;
 using System.IO;
 
@@ -11,7 +12,7 @@ namespace StoreSurvey.Areas.Api.Models
     public class ImplShopsManager : IShopsManager
     {
         private StoreSurveyEntities _db = new StoreSurveyEntities();
-
+        private static Logger log = LogManager.GetCurrentClassLogger();
 
         List<Shop> IShopsManager.GetAllShops()
         {
@@ -46,6 +47,55 @@ namespace StoreSurvey.Areas.Api.Models
         Shop IShopsManager.PutShop(Shop shop)
         {
             throw new NotImplementedException();
+        }
+
+        public List<MustHaveSku> GetAllMustHaveSkus()
+        {
+            var list = (from m in this._db.MustHaveSkus
+                        select m).ToList();
+            log.Debug("mustHaveSkus count to save in list: "+list.Count);
+            return list;
+        }
+
+        public void PostAllMustHaveSkus(List<MustHaveSku> list)
+        {
+            try
+            {
+                foreach (var mustHaveSku in list)
+                {
+                    this._db.MustHaveSkus.Add(mustHaveSku);
+                }
+                log.Debug("saved mustHaveSkus in database successfully");
+            }
+            catch (Exception)
+            {
+                log.Debug("error saving mustHaveSkus in database!");
+                throw;
+            }
+        }
+
+        public List<MustHaveSkusBasic> GetAllMustHaveSkusBasic()
+        {
+            return  (from m in this._db.MustHaveSkusBasics
+                       select m).ToList();
+        }
+
+        public void PostAllMustHaveSkusBasic(List<MustHaveSkusBasic> list)
+        {
+            try
+            {
+
+                foreach (var mustHaveSkusBasic in list)
+                {
+                    this._db.MustHaveSkusBasics.Add(mustHaveSkusBasic);
+                }
+                log.Debug("added basic skus successfully");
+            }
+            catch (Exception)
+            {
+                log.Debug("error adding basic skus");
+                throw;
+            }
         }
     }
 }

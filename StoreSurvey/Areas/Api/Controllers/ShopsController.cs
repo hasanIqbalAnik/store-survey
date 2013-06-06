@@ -16,11 +16,12 @@ namespace StoreSurvey.Areas.Api.Controllers
     public class ShopsController : Controller
     {
         private static Logger log = LogManager.GetCurrentClassLogger();
-
+        private JavaScriptSerializer serializer;
         IShopsManager shopsManager;
 
         public ShopsController()
         {
+            serializer = new JavaScriptSerializer();
             this.shopsManager = new ImplShopsManager();
 
         }
@@ -34,34 +35,34 @@ namespace StoreSurvey.Areas.Api.Controllers
         [HttpGet]
         public ActionResult ShopsList(int? pageNum, int? chunkSize)
         {
-            
-        //    var file = new System.IO.StreamWriter(Server.MapPath("~/downloads/test.txt"));
 
-            
-            var serializer = new JavaScriptSerializer();
+            //    var file = new System.IO.StreamWriter(Server.MapPath("~/downloads/test.txt"));
+
+
+
             #region unused memoryStream declaration
-            
+
             //var memoryStream = new MemoryStream();
             //TextWriter tw = new StreamWriter(memoryStream);
             #endregion
 
             var shopList = shopsManager.GetAllShops();
-            
+
             var collection = shopList.Select(x => new
             {
                 id = x.Id,
-               // SLNO = x.SLNO,
+                // SLNO = x.SLNO,
                 region = x.Region,
                 territory = x.Territory,
                 town = x.Town,
                 //ShopName = x.ShopName,
                 //ShopAddress = x.ShopAddress,
-                shopType= x.ShopType,
+                shopType = x.ShopType,
                 //SLAB  = x.SLAB,
                 //Phon = x.Phon,
                 dmsCode = x.DMS_CODE
                 #region unused questionnaires
-                
+
                 //Questionnaires = x.Questionnaires.Select(item => new
                 //{
                 //    Id = item.Id,
@@ -78,10 +79,10 @@ namespace StoreSurvey.Areas.Api.Controllers
                 #endregion
             });
 
-           if(pageNum != null && chunkSize != null) collection = collection.Take(pageNum.Value * chunkSize.Value).Skip((pageNum.Value - 1) * (chunkSize.Value));
-            
+            if (pageNum != null && chunkSize != null) collection = collection.Take(pageNum.Value * chunkSize.Value).Skip((pageNum.Value - 1) * (chunkSize.Value));
+
             #region unused file writing
-            
+
             //foreach (var t in collection)
             //{
 
@@ -99,24 +100,59 @@ namespace StoreSurvey.Areas.Api.Controllers
             serializer.MaxJsonLength = Int32.MaxValue;
             log.Debug("setting serializer value to " + Int32.MaxValue);
             log.Debug("test line again");
-      
+
             return new ContentResult
             {
                 Content = serializer.Serialize(collection),
                 ContentType = "application/json"
             };
-            //log.Debug("result string size after serialization: " + result.Content.Length);
-            //return result;
-      
+
+
 
         }
 
-        //[HttpGet]
-        //public ActionResult ShopsList(String shopInfoFilePath)
-        //{
-        //    this.shopsManager.PostAllShops();
-        //    return View();
-        //}
+        #region mustHaveSkuCRUD
+
+        [HttpGet]
+        public ActionResult MustHaveSkus()
+        {
+            return new ContentResult
+         {
+             Content = serializer.Serialize(this.shopsManager.GetAllMustHaveSkus()),
+             ContentType = "application/json"
+         };
+
+
+        }
+
+        [HttpPost]
+        public  ActionResult MustHaveSkus(List<MustHaveSku> listOfSkus)
+        {
+            this.shopsManager.PostAllMustHaveSkus(listOfSkus);
+            return Json("Added skus successfully", JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpGet]
+        public ActionResult MustHaveSkusBasic()
+        {
+            return new ContentResult
+            {
+                Content = serializer.Serialize(this.shopsManager.GetAllMustHaveSkusBasic()),
+                ContentType = "application/json"
+            };
+        }
+
+        [HttpPost]
+        public ActionResult MustHaveSkusBasic(List<MustHaveSkusBasic> list )
+        {
+            this.shopsManager.PostAllMustHaveSkusBasic(list);
+            return Json("Added Basic skus successfully", JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+    
 
     }
 }
+

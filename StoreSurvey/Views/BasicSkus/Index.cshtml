@@ -1,0 +1,52 @@
+﻿@model IEnumerable<StoreSurvey.MustHaveSkusBasic>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".well").hide();
+    });
+</script>
+
+<p>
+    
+</p>
+<div class="span12">
+    @Html.ActionLink("Create New", "Create")
+    <table class="table table-striped">
+        <tr>
+            <th>
+                SKU
+            </th>
+            <th>
+                SKU CODE
+            </th>
+            <th>
+                Shop Type
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.skus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.skuCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.shopType)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
