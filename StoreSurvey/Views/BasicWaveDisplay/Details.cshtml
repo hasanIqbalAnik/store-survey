@@ -1,0 +1,31 @@
+﻿@model StoreSurvey.WaveDisplayBasic
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>WaveDisplayBasic</legend>
+
+    <div class="display-label">skus</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.skus)
+    </div>
+
+    <div class="display-label">skuCode</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.skuCode)
+    </div>
+
+    <div class="display-label">setNum</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.setNum)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

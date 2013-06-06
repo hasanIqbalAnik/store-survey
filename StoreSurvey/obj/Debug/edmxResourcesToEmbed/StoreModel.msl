@@ -147,5 +147,53 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="FixedDisplayBasics">
+      <EntityTypeMapping TypeName="StoreSurveyModel.FixedDisplayBasic">
+        <MappingFragment StoreEntitySet="FixedDisplayBasic">
+          <ScalarProperty Name="setNum" ColumnName="setNum" />
+          <ScalarProperty Name="skuOrder" ColumnName="skuOrder" />
+          <ScalarProperty Name="skucode" ColumnName="skucode" />
+          <ScalarProperty Name="sku" ColumnName="sku" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WaveDisplayBasics">
+      <EntityTypeMapping TypeName="StoreSurveyModel.WaveDisplayBasic">
+        <MappingFragment StoreEntitySet="WaveDisplayBasic">
+          <ScalarProperty Name="setNum" ColumnName="setNum" />
+          <ScalarProperty Name="skuCode" ColumnName="skuCode" />
+          <ScalarProperty Name="skus" ColumnName="skus" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HotSpotBasics">
+      <EntityTypeMapping TypeName="StoreSurveyModel.HotSpotBasic">
+        <MappingFragment StoreEntitySet="HotSpotBasic">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="head" ColumnName="head" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POPBasics">
+      <EntityTypeMapping TypeName="StoreSurveyModel.POPBasic">
+        <MappingFragment StoreEntitySet="POPBasic">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdditionalSkuBasics">
+      <EntityTypeMapping TypeName="StoreSurveyModel.AdditionalSkuBasic">
+        <MappingFragment StoreEntitySet="AdditionalSkuBasic">
+          <ScalarProperty Name="skuCode" ColumnName="skuCode" />
+          <ScalarProperty Name="sku" ColumnName="sku" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

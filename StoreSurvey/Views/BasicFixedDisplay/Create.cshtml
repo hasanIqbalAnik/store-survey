@@ -1,0 +1,58 @@
+﻿@model StoreSurvey.FixedDisplayBasic
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>FixedDisplayBasic</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.sku)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.sku)
+            @Html.ValidationMessageFor(model => model.sku)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.skucode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.skucode)
+            @Html.ValidationMessageFor(model => model.skucode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.skuOrder)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.skuOrder)
+            @Html.ValidationMessageFor(model => model.skuOrder)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.setNum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.setNum)
+            @Html.ValidationMessageFor(model => model.setNum)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

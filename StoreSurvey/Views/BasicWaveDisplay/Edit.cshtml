@@ -1,0 +1,52 @@
+﻿@model StoreSurvey.WaveDisplayBasic
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>WaveDisplayBasic</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.skus)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.skus)
+            @Html.ValidationMessageFor(model => model.skus)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.skuCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.skuCode)
+            @Html.ValidationMessageFor(model => model.skuCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.setNum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.setNum)
+            @Html.ValidationMessageFor(model => model.setNum)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

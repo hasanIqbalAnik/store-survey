@@ -127,16 +127,27 @@
     <Compile Include="AdditionalSku.cs">
       <DependentUpon>StoreModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="AdditionalSkuBasic.cs">
+      <DependentUpon>StoreModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
     <Compile Include="Areas\Api\Controllers\ShopsController.cs" />
     <Compile Include="Areas\Api\Models\ImplShopsManager.cs" />
     <Compile Include="Areas\Api\Models\IShopsManager.cs" />
     <Compile Include="Areas\Api\Models\RestHttpVerbFilter.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdditionalSkuController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BasicFixedDisplayController.cs" />
+    <Compile Include="Controllers\BasicHotSpotController.cs" />
     <Compile Include="Controllers\BasicSkusController.cs" />
+    <Compile Include="Controllers\BasicWaveDisplayController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PopBasicController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="FixedDisplayBasic.cs">
+      <DependentUpon>StoreModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="FixedDisplaySku.cs">
       <DependentUpon>StoreModels.tt</DependentUpon>
     </Compile>
@@ -146,6 +157,9 @@
     <Compile Include="helpers\ExcellHelper.cs" />
     <Compile Include="helpers\ShopSingleton.cs" />
     <Compile Include="HotSpot.cs">
+      <DependentUpon>StoreModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HotSpotBasic.cs">
       <DependentUpon>StoreModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Implementations\ImplShopService.cs" />
@@ -161,6 +175,9 @@
       <DependentUpon>StoreModels.tt</DependentUpon>
     </Compile>
     <Compile Include="PointOfPurchase.cs">
+      <DependentUpon>StoreModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POPBasic.cs">
       <DependentUpon>StoreModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -195,6 +212,9 @@
       <DependentUpon>StoreModels.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
+      <DependentUpon>StoreModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WaveDisplayBasic.cs">
       <DependentUpon>StoreModels.tt</DependentUpon>
     </Compile>
     <Compile Include="WaveDisplaySku.cs">
@@ -343,6 +363,31 @@
     <Content Include="Views\BasicSkus\Edit.cshtml" />
     <Content Include="Views\BasicSkus\Delete.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml.cshtml" />
+    <Content Include="Views\BasicFixedDisplay\Index.cshtml" />
+    <Content Include="Views\BasicFixedDisplay\Details.cshtml" />
+    <Content Include="Views\BasicFixedDisplay\Create.cshtml" />
+    <Content Include="Views\BasicFixedDisplay\Edit.cshtml" />
+    <Content Include="Views\BasicFixedDisplay\Delete.cshtml" />
+    <Content Include="Views\BasicWaveDisplay\Index.cshtml" />
+    <Content Include="Views\BasicWaveDisplay\Details.cshtml" />
+    <Content Include="Views\BasicWaveDisplay\Create.cshtml" />
+    <Content Include="Views\BasicWaveDisplay\Edit.cshtml" />
+    <Content Include="Views\BasicWaveDisplay\Delete.cshtml" />
+    <Content Include="Views\BasicHotSpot\Index.cshtml" />
+    <Content Include="Views\BasicHotSpot\Details.cshtml" />
+    <Content Include="Views\BasicHotSpot\Create.cshtml" />
+    <Content Include="Views\BasicHotSpot\Edit.cshtml" />
+    <Content Include="Views\BasicHotSpot\Delete.cshtml" />
+    <Content Include="Views\PopBasic\Index.cshtml" />
+    <Content Include="Views\PopBasic\Details.cshtml" />
+    <Content Include="Views\PopBasic\Create.cshtml" />
+    <Content Include="Views\PopBasic\Edit.cshtml" />
+    <Content Include="Views\PopBasic\Delete.cshtml" />
+    <Content Include="Views\AdditionalSku\Index.cshtml" />
+    <Content Include="Views\AdditionalSku\Details.cshtml" />
+    <Content Include="Views\AdditionalSku\Create.cshtml" />
+    <Content Include="Views\AdditionalSku\Edit.cshtml" />
+    <Content Include="Views\AdditionalSku\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

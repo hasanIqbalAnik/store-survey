@@ -1,0 +1,34 @@
+﻿@model StoreSurvey.WaveDisplayBasic
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>WaveDisplayBasic</legend>
+
+    <div class="display-label">skus</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.skus)
+    </div>
+
+    <div class="display-label">skuCode</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.skuCode)
+    </div>
+
+    <div class="display-label">setNum</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.setNum)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

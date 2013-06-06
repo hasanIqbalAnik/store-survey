@@ -97,5 +97,37 @@ namespace StoreSurvey.Areas.Api.Models
                 throw;
             }
         }
+
+        public List<FixedDisplayBasic> GetAllFixedDisplayBasic()
+        {
+            return (from m in this._db.FixedDisplayBasics
+                    select m).ToList();
+            
+        }
+
+        public List<WaveDisplayBasic> GetAllWaveDisplayBasic()
+        {
+            return (from m in this._db.WaveDisplayBasics
+                    select m).ToList();
+            
+        }
+
+        public List<HotSpotBasic> GetAllHotSpotBasic()
+        {
+            return (from m in this._db.HotSpotBasics
+                    select m).ToList();
+        }
+
+        public List<POPBasic> GetAllPopBasic()
+        {
+            return (from m in this._db.POPBasics
+                    select m).ToList();
+        }
+
+        public List<AdditionalSkuBasic> GetAllAdditionalSkuBasic()
+        {
+            return (from m in this._db.AdditionalSkuBasics
+                    select m).ToList();
+        }
     }
 }

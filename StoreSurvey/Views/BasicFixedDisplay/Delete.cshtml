@@ -1,0 +1,39 @@
+﻿@model StoreSurvey.FixedDisplayBasic
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>FixedDisplayBasic</legend>
+
+    <div class="display-label">sku</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sku)
+    </div>
+
+    <div class="display-label">skucode</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.skucode)
+    </div>
+
+    <div class="display-label">skuOrder</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.skuOrder)
+    </div>
+
+    <div class="display-label">setNum</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.setNum)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

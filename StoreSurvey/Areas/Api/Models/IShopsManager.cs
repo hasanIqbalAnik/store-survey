@@ -20,5 +20,12 @@ namespace StoreSurvey.Areas.Api.Models
 
         List<MustHaveSkusBasic> GetAllMustHaveSkusBasic();
         void PostAllMustHaveSkusBasic(List<MustHaveSkusBasic> list);
+
+        List<FixedDisplayBasic> GetAllFixedDisplayBasic();
+        List<WaveDisplayBasic> GetAllWaveDisplayBasic();
+        List<HotSpotBasic> GetAllHotSpotBasic();
+        List<POPBasic> GetAllPopBasic();
+        List<AdditionalSkuBasic> GetAllAdditionalSkuBasic();
+
     }
 }

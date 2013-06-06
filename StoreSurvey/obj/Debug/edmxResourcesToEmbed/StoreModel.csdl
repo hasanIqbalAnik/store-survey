@@ -41,6 +41,11 @@
       <End Role="Questionnaire" EntitySet="Questionnaires" />
     </AssociationSet>
     <EntitySet Name="MustHaveSkusBasics" EntityType="StoreSurveyModel.MustHaveSkusBasic" />
+    <EntitySet Name="FixedDisplayBasics" EntityType="StoreSurveyModel.FixedDisplayBasic" />
+    <EntitySet Name="WaveDisplayBasics" EntityType="StoreSurveyModel.WaveDisplayBasic" />
+    <EntitySet Name="HotSpotBasics" EntityType="StoreSurveyModel.HotSpotBasic" />
+    <EntitySet Name="POPBasics" EntityType="StoreSurveyModel.POPBasic" />
+    <EntitySet Name="AdditionalSkuBasics" EntityType="StoreSurveyModel.AdditionalSkuBasic" />
   </EntityContainer>
   <EntityType Name="Role">
     <Key>
@@ -273,5 +278,48 @@
     <Property Type="String" Name="skus" MaxLength="300" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="skuCode" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="shopType" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FixedDisplayBasic">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="sku" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="skucode" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="skuOrder" />
+    <Property Type="Int32" Name="setNum" />
+  </EntityType>
+  <EntityType Name="WaveDisplayBasic">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="skus" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="skuCode" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="setNum" />
+  </EntityType>
+  <EntityType Name="HotSpotBasic">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="head" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="POPBasic">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="description" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AdditionalSkuBasic">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="sku" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="skuCode" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

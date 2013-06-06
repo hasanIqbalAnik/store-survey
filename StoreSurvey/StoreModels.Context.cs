@@ -31,5 +31,10 @@ namespace StoreSurvey
         public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<WaveDisplaySku> WaveDisplaySkus { get; set; }
         public DbSet<MustHaveSkusBasic> MustHaveSkusBasics { get; set; }
+        public DbSet<FixedDisplayBasic> FixedDisplayBasics { get; set; }
+        public DbSet<WaveDisplayBasic> WaveDisplayBasics { get; set; }
+        public DbSet<HotSpotBasic> HotSpotBasics { get; set; }
+        public DbSet<POPBasic> POPBasics { get; set; }
+        public DbSet<AdditionalSkuBasic> AdditionalSkuBasics { get; set; }
     }
 }

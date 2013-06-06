@@ -1,0 +1,36 @@
+﻿@model StoreSurvey.FixedDisplayBasic
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>FixedDisplayBasic</legend>
+
+    <div class="display-label">sku</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sku)
+    </div>
+
+    <div class="display-label">skucode</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.skucode)
+    </div>
+
+    <div class="display-label">skuOrder</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.skuOrder)
+    </div>
+
+    <div class="display-label">setNum</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.setNum)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

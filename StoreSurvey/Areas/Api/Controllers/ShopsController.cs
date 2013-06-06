@@ -151,7 +151,64 @@ namespace StoreSurvey.Areas.Api.Controllers
         }
         #endregion
 
-    
+        #region FixedDisplayBasic
+        [HttpGet]
+        public ActionResult FixedDisplayBasics()
+        {
+            return new ContentResult
+            {
+                Content = serializer.Serialize(this.shopsManager.GetAllFixedDisplayBasic()),
+                ContentType = "application/json"
+            };
+        }
+        #endregion
+
+        #region WaveDisplays
+        [HttpGet]
+        public ActionResult WaveDisplayBasics()
+        {
+            return new ContentResult
+            {
+                Content = serializer.Serialize(this.shopsManager.GetAllWaveDisplayBasic()),
+                ContentType = "application/json"
+            };
+        }
+        #endregion
+        #region hot spot basics
+        [HttpGet]
+        public ActionResult HotSpotBasics()
+        {
+            return new ContentResult
+            {
+                Content = serializer.Serialize(this.shopsManager.GetAllHotSpotBasic()),
+                ContentType = "application/json"
+            };
+        }
+        #endregion
+
+        #region PopBasics
+        [HttpGet]
+        public  ActionResult POPBasics()
+        {
+            return new ContentResult
+            {
+                Content = serializer.Serialize(this.shopsManager.GetAllPopBasic()),
+                ContentType = "application/json"
+            };
+        }
+        #endregion
+
+        #region additional sku basic
+        [HttpGet]
+        public ActionResult AdditionalSkuBasics()
+        {
+            return new ContentResult
+            {
+                Content = serializer.Serialize(this.shopsManager.GetAllAdditionalSkuBasic()),
+                ContentType = "application/json"
+            };
+        }
+        #endregion
 
     }
 }
