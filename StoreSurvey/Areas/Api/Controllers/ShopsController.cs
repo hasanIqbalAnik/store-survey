@@ -92,7 +92,7 @@ namespace StoreSurvey.Areas.Api.Controllers
 
             serializer.MaxJsonLength = Int32.MaxValue;
             log.Debug("setting serializer value to " + Int32.MaxValue);
-
+            log.Debug("test line");
       
             return new ContentResult
             {
