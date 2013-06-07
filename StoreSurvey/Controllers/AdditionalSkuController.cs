@@ -100,6 +100,17 @@ namespace StoreSurvey.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public ActionResult testJson()
+        {
+            //return Json("[{'custId':7,"cookieNum":"","emailId":"raju.allen1888@gmail.com","facebookId":"","twitterId":"","gmailId":"","mobilePhone":""},{"custId":8,"cookieNum":"","emailId":"raju@gmail.com","facebookId":"","twitterId":"","gmailId":"","mobilePhone":""}]", JsonRequestBehavior.AllowGet)
+
+            return Json(new{custId = "7",cookieNum = "",emailId = "raju.allen1888@gmail.com"}, JsonRequestBehavior.AllowGet);
+
+            
+        }
+
+
         
     }
 }

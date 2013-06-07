@@ -37,20 +37,32 @@
         <div class="container-fluid">
        
             <div class="nav-collapse">
-                <ul class="nav">
+                          <ul class="nav">
                     <li class="@(ViewBag.Active == "Home" ? "active" : "")">
                         @Html.ActionLink("Home", "Index", "Home")
                     </li>
-                    <li class="divider-vertical"></li>
+                   @* <li class="divider-vertical"></li>
                     <li class="@(ViewBag.Active == "About" ? "active" : "")">
                         @Html.ActionLink("About", "About", "Home")
-                    </li>
+                    </li>*@
                     <li class="divider-vertical"></li>
+                    
+                    
                     <li> @Html.ActionLink("Shops","Index","Shop")</li>
-                      <li class="divider-vertical"></li>
-                    <li>@Html.ActionLink("BasicSkus","Index","BasicSkus")</li>
+                     <li class="divider-vertical"></li>
+                    <li>@Html.ActionLink("Skus","Index","BasicSkus")</li>
                     <li class="divider-vertical"></li>
-                    <li>@Html.ActionLink("Admin Area","Index","Admin")</li>
+                    <li>@Html.ActionLink("Fixed Display","Index","BasicFixedDisplay")</li>
+                        <li class="divider-vertical"></li>
+                    <li>@Html.ActionLink("Wave Display","Index","BasicWaveDisplay")</li>
+                    <li class="divider-vertical"></li>
+                    <li>@Html.ActionLink("Hot Spot","Index","BasicHotSpot")</li>
+                    <li class="divider-vertical"></li>
+                    <li>@Html.ActionLink("POP","Index","PopBasic")</li>
+                     <li class="divider-vertical"></li>
+                    <li>@Html.ActionLink("Extra Sku","Index","AdditionalSku")</li>
+                    <li class="divider-vertical"></li>
+                    <li>@Html.ActionLink("Admin","Index","Admin")</li>
                 </ul>
             </div>
 
