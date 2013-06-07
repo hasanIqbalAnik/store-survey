@@ -23,7 +23,7 @@ namespace StoreSurvey
     
         // Primitive properties
     
-        public int Id { get; set; }
+        public int id { get; set; }
         public string skus { get; set; }
         public string skuCode { get; set; }
         public string formId { get; set; }

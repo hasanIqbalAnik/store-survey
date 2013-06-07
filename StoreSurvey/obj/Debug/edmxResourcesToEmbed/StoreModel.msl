@@ -1,27 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="StoreSurveyModelStoreContainer" CdmEntityContainer="StoreSurveyEntities">
-    <EntitySetMapping Name="Roles">
-      <EntityTypeMapping TypeName="StoreSurveyModel.Role">
-        <MappingFragment StoreEntitySet="Role">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="StoreSurveyModel.User">
-        <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="Active" ColumnName="Active" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Shops">
       <EntityTypeMapping TypeName="StoreSurveyModel.Shop">
         <MappingFragment StoreEntitySet="Shop">
@@ -35,7 +14,7 @@
           <ScalarProperty Name="Territory" ColumnName="Territory" />
           <ScalarProperty Name="Region" ColumnName="Region" />
           <ScalarProperty Name="SLNO" ColumnName="SLNO" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -44,7 +23,7 @@
         <MappingFragment StoreEntitySet="AdditionalSku">
           <ScalarProperty Name="formId" ColumnName="formId" />
           <ScalarProperty Name="mustHaveSkuId" ColumnName="mustHaveSkuId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -59,7 +38,7 @@
           <ScalarProperty Name="totalDisplayCount" ColumnName="totalDisplayCount" />
           <ScalarProperty Name="availability" ColumnName="availability" />
           <ScalarProperty Name="groupId" ColumnName="groupId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -71,7 +50,7 @@
           <ScalarProperty Name="compliance" ColumnName="compliance" />
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="head" ColumnName="head" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -83,7 +62,7 @@
           <ScalarProperty Name="formId" ColumnName="formId" />
           <ScalarProperty Name="skuCode" ColumnName="skuCode" />
           <ScalarProperty Name="skus" ColumnName="skus" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -95,7 +74,7 @@
           <ScalarProperty Name="availability" ColumnName="availability" />
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -111,7 +90,7 @@
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="shopId" ColumnName="shopId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -133,7 +112,7 @@
           <ScalarProperty Name="mustHaveSkuId" ColumnName="mustHaveSkuId" />
           <ScalarProperty Name="ored" ColumnName="ored" />
           <ScalarProperty Name="sequence" ColumnName="sequence" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -143,7 +122,7 @@
           <ScalarProperty Name="shopType" ColumnName="shopType" />
           <ScalarProperty Name="skuCode" ColumnName="skuCode" />
           <ScalarProperty Name="skus" ColumnName="skus" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -154,7 +133,7 @@
           <ScalarProperty Name="skuOrder" ColumnName="skuOrder" />
           <ScalarProperty Name="skucode" ColumnName="skucode" />
           <ScalarProperty Name="sku" ColumnName="sku" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -164,16 +143,7 @@
           <ScalarProperty Name="setNum" ColumnName="setNum" />
           <ScalarProperty Name="skuCode" ColumnName="skuCode" />
           <ScalarProperty Name="skus" ColumnName="skus" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="HotSpotBasics">
-      <EntityTypeMapping TypeName="StoreSurveyModel.HotSpotBasic">
-        <MappingFragment StoreEntitySet="HotSpotBasic">
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="head" ColumnName="head" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -182,7 +152,7 @@
         <MappingFragment StoreEntitySet="POPBasic">
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -191,7 +161,45 @@
         <MappingFragment StoreEntitySet="AdditionalSkuBasic">
           <ScalarProperty Name="skuCode" ColumnName="skuCode" />
           <ScalarProperty Name="sku" ColumnName="sku" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopTypesBasics">
+      <EntityTypeMapping TypeName="StoreSurveyModel.ShopTypesBasic">
+        <MappingFragment StoreEntitySet="ShopTypesBasic">
+          <ScalarProperty Name="shopType" ColumnName="shopType" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HotSpotBasics">
+      <EntityTypeMapping TypeName="StoreSurveyModel.HotSpotBasic">
+        <MappingFragment StoreEntitySet="HotSpotBasic">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="head" ColumnName="head" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="StoreSurveyModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="StoreSurveyModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

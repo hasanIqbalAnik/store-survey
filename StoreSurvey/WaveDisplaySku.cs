@@ -16,7 +16,7 @@ namespace StoreSurvey
     {
         // Primitive properties
     
-        public int Id { get; set; }
+        public int id { get; set; }
         public Nullable<int> sequence { get; set; }
         public Nullable<int> ored { get; set; }
         public int mustHaveSkuId { get; set; }

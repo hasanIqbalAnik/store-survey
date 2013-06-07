@@ -42,7 +42,7 @@ namespace StoreSurvey.Controllers
             ViewBag.dmsCodeFilter = dmsCodeFilter;
 
             
-            var students = db.Shops.OrderBy(m => m.Id).Take(6000);
+            var students = db.Shops.OrderBy(m => m.id).Take(6000);
             if (!String.IsNullOrEmpty(regionFilterString))
             {
                 students = students.Where(s => s.Region.ToUpper().Contains(regionFilterString.ToUpper()));

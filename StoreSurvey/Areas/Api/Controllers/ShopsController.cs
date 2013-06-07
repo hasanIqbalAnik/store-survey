@@ -50,7 +50,7 @@ namespace StoreSurvey.Areas.Api.Controllers
 
             var collection = shopList.Select(x => new
             {
-                id = x.Id,
+                id = x.id,
                 // SLNO = x.SLNO,
                 region = x.Region,
                 territory = x.Territory,
@@ -65,7 +65,7 @@ namespace StoreSurvey.Areas.Api.Controllers
 
                 //Questionnaires = x.Questionnaires.Select(item => new
                 //{
-                //    Id = item.Id,
+                //    id = item.id,
                 //    shopId = item.shopId,
                 //    name = item.name,
                 //    date = item.date,

@@ -62,7 +62,7 @@ namespace StoreSurvey.Repository
 
         public User GetUser(int id)
         {
-            return entities.Users.SingleOrDefault(user => user.ID == id);
+            return entities.Users.SingleOrDefault(user => user.id == id);
         }
 
         public User GetUser(string userName)
@@ -86,7 +86,7 @@ namespace StoreSurvey.Repository
                 throw new ArgumentException(MissingRole);
 
             return from user in entities.Users
-                   where user.RoleID == role.ID
+                   where user.RoleID == role.id
                    orderby user.UserName
                    select user;
         }
@@ -100,7 +100,7 @@ namespace StoreSurvey.Repository
 
         public Role GetRole(int id)
         {
-            return entities.Roles.SingleOrDefault(role => role.ID == id);
+            return entities.Roles.SingleOrDefault(role => role.id == id);
         }
 
         public Role GetRole(string name)
@@ -161,7 +161,7 @@ namespace StoreSurvey.Repository
                 Name = name,
                 Password = FormsAuthentication.HashPasswordForStoringInConfigFile(password.Trim(), "md5"),
                 Email = email,
-                RoleID = role.ID,
+                RoleID = role.id,
                 Active = 1
             };
 
@@ -248,7 +248,7 @@ namespace StoreSurvey.Repository
             if (user == null)
                 return false;
 
-            return (entities.Users.SingleOrDefault(u => u.ID == user.ID || u.UserName == user.UserName) != null);
+            return (entities.Users.SingleOrDefault(u => u.id == user.id || u.UserName == user.UserName) != null);
         }
 
         public bool RoleExists(Role role)
@@ -256,7 +256,7 @@ namespace StoreSurvey.Repository
             if (role == null)
                 return false;
 
-            return (entities.Roles.SingleOrDefault(r => r.ID == role.ID || r.Name == role.Name) != null);
+            return (entities.Roles.SingleOrDefault(r => r.id == role.id || r.Name == role.Name) != null);
         }
 
         #endregion

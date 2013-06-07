@@ -21,7 +21,7 @@ namespace StoreSurvey
     
         // Primitive properties
     
-        public int ID { get; set; }
+        public int id { get; set; }
         public string Name { get; set; }
     
         // Navigation properties

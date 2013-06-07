@@ -1,12 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="StoreSurveyModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
   <EntityContainer Name="StoreSurveyEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Roles" EntityType="StoreSurveyModel.Role" />
-    <EntitySet Name="Users" EntityType="StoreSurveyModel.User" />
-    <AssociationSet Name="FK_User_Role" Association="StoreSurveyModel.FK_User_Role">
-      <End Role="Role" EntitySet="Roles" />
-      <End Role="User" EntitySet="Users" />
-    </AssociationSet>
     <EntitySet Name="Shops" EntityType="StoreSurveyModel.Shop" />
     <EntitySet Name="AdditionalSkus" EntityType="StoreSurveyModel.AdditionalSku" />
     <EntitySet Name="FixedDisplaySkus" EntityType="StoreSurveyModel.FixedDisplaySku" />
@@ -43,48 +37,22 @@
     <EntitySet Name="MustHaveSkusBasics" EntityType="StoreSurveyModel.MustHaveSkusBasic" />
     <EntitySet Name="FixedDisplayBasics" EntityType="StoreSurveyModel.FixedDisplayBasic" />
     <EntitySet Name="WaveDisplayBasics" EntityType="StoreSurveyModel.WaveDisplayBasic" />
-    <EntitySet Name="HotSpotBasics" EntityType="StoreSurveyModel.HotSpotBasic" />
     <EntitySet Name="POPBasics" EntityType="StoreSurveyModel.POPBasic" />
     <EntitySet Name="AdditionalSkuBasics" EntityType="StoreSurveyModel.AdditionalSkuBasic" />
+    <EntitySet Name="ShopTypesBasics" EntityType="StoreSurveyModel.ShopTypesBasic" />
+    <EntitySet Name="HotSpotBasics" EntityType="StoreSurveyModel.HotSpotBasic" />
+    <EntitySet Name="Roles" EntityType="StoreSurveyModel.Role" />
+    <EntitySet Name="Users" EntityType="StoreSurveyModel.User" />
+    <AssociationSet Name="FK_User_Role" Association="StoreSurveyModel.FK_User_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="Role">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-    <NavigationProperty Name="Users" Relationship="StoreSurveyModel.FK_User_Role" FromRole="Role" ToRole="User" />
-  </EntityType>
-  <EntityType Name="User">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="RoleID" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="UserName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
-    <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-    <NavigationProperty Name="Role" Relationship="StoreSurveyModel.FK_User_Role" FromRole="User" ToRole="Role" />
-    <Property Type="Int32" Name="Active" Nullable="true" />
-  </EntityType>
-  <Association Name="FK_User_Role">
-    <End Role="Role" Type="StoreSurveyModel.Role" Multiplicity="1" />
-    <End Role="User" Type="StoreSurveyModel.User" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Role">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="RoleID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="Shop">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
     <Property Type="String" Name="SLNO" Nullable="true" />
     <Property Type="String" Name="Region" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="Territory" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -99,18 +67,18 @@
   </EntityType>
   <EntityType Name="AdditionalSku">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
     <Property Type="Int32" Name="mustHaveSkuId" Nullable="false" />
     <NavigationProperty Name="MustHaveSku" Relationship="StoreSurveyModel.FK_AdditionalSku_MustHaveSku" FromRole="AdditionalSku" ToRole="MustHaveSku" />
     <Property Type="String" Name="formId" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="FixedDisplaySku">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
     <Property Type="Int32" Name="groupId" />
     <Property Type="Int32" Name="availability" />
     <Property Type="Int32" Name="totalDisplayCount" />
@@ -123,9 +91,9 @@
   </EntityType>
   <EntityType Name="HotSpot">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
     <Property Type="String" Name="head" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="description" MaxLength="1000" FixedLength="false" Unicode="true" />
     <Property Type="Int32" Name="compliance" />
@@ -135,9 +103,9 @@
   </EntityType>
   <EntityType Name="MustHaveSku">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
     <Property Type="String" Name="skus" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="skuCode" MaxLength="255" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="AdditionalSkus" Relationship="StoreSurveyModel.FK_AdditionalSku_MustHaveSku" FromRole="MustHaveSku" ToRole="AdditionalSku" />
@@ -149,9 +117,9 @@
   </EntityType>
   <EntityType Name="PointOfPurchase">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
     <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="description" MaxLength="1000" FixedLength="false" Unicode="true" />
     <Property Type="Int32" Name="availability" />
@@ -161,9 +129,9 @@
   </EntityType>
   <EntityType Name="Questionnaire">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
     <Property Type="Int32" Name="shopId" Nullable="false" />
     <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Type="DateTime" Name="date" />
@@ -189,9 +157,9 @@
   </EntityType>
   <EntityType Name="WaveDisplaySku">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
     <Property Type="Int32" Name="sequence" />
     <Property Type="Int32" Name="ored" />
     <Property Type="Int32" Name="mustHaveSkuId" Nullable="false" />
@@ -203,7 +171,7 @@
     <End Type="StoreSurveyModel.AdditionalSku" Role="AdditionalSku" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MustHaveSku">
-        <PropertyRef Name="Id" />
+        <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="AdditionalSku">
         <PropertyRef Name="mustHaveSkuId" />
@@ -215,7 +183,7 @@
     <End Type="StoreSurveyModel.FixedDisplaySku" Role="FixedDisplaySku" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MustHaveSku">
-        <PropertyRef Name="Id" />
+        <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="FixedDisplaySku">
         <PropertyRef Name="mustHaveSkuId" />
@@ -227,7 +195,7 @@
     <End Type="StoreSurveyModel.HotSpot" Role="HotSpot" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Questionnaire">
-        <PropertyRef Name="Id" />
+        <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="HotSpot">
         <PropertyRef Name="questionnaireId" />
@@ -239,7 +207,7 @@
     <End Type="StoreSurveyModel.WaveDisplaySku" Role="WaveDisplaySku" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="MustHaveSku">
-        <PropertyRef Name="Id" />
+        <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="WaveDisplaySku">
         <PropertyRef Name="mustHaveSkuId" />
@@ -251,7 +219,7 @@
     <End Type="StoreSurveyModel.PointOfPurchase" Role="PointOfPurchase" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Questionnaire">
-        <PropertyRef Name="Id" />
+        <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="PointOfPurchase">
         <PropertyRef Name="questionnaireId" />
@@ -263,7 +231,7 @@
     <End Type="StoreSurveyModel.Questionnaire" Role="Questionnaire" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Shop">
-        <PropertyRef Name="Id" />
+        <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="Questionnaire">
         <PropertyRef Name="shopId" />
@@ -272,18 +240,18 @@
   </Association>
   <EntityType Name="MustHaveSkusBasic">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Name="id" Nullable="false" Type="Int32" />
     <Property Type="String" Name="skus" MaxLength="300" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="skuCode" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="shopType" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="FixedDisplayBasic">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
     <Property Type="String" Name="sku" MaxLength="300" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="skucode" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Type="Int32" Name="skuOrder" />
@@ -291,35 +259,75 @@
   </EntityType>
   <EntityType Name="WaveDisplayBasic">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
     <Property Type="String" Name="skus" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="skuCode" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Type="Int32" Name="setNum" />
   </EntityType>
-  <EntityType Name="HotSpotBasic">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="head" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="POPBasic">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
     <Property Type="String" Name="name" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="description" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="AdditionalSkuBasic">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
     <Property Type="String" Name="sku" MaxLength="300" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="skuCode" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityType Name="ShopTypesBasic">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="shopType" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="HotSpotBasic">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="head" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="description" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="StoreSurveyModel.FK_User_Role" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="RoleID" Nullable="false" />
+    <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="UserName" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Email" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Active" />
+    <NavigationProperty Name="Role" Relationship="StoreSurveyModel.FK_User_Role" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK_User_Role">
+    <End Type="StoreSurveyModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="StoreSurveyModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

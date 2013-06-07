@@ -40,7 +40,7 @@ namespace StoreSurvey.Controllers
 
         public ViewResult Details(int id)
         {
-            User user = db.Users.Single(u => u.ID == id);
+            User user = db.Users.Single(u => u.id == id);
             return View(user);
         }
 
@@ -49,7 +49,7 @@ namespace StoreSurvey.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.RoleID = new SelectList(db.Roles, "ID", "Name");
+            ViewBag.RoleID = new SelectList(db.Roles, "id", "Name");
             return View();
         } 
 
@@ -65,7 +65,7 @@ namespace StoreSurvey.Controllers
                 return RedirectToAction("Index");
             }
             ModelState.AddModelError(string.Empty,"Username or Email is taken. They should be uniuqe.");
-            ViewBag.RoleID = new SelectList(db.Roles, "ID", "Name", user.RoleID);
+            ViewBag.RoleID = new SelectList(db.Roles, "id", "Name", user.RoleID);
             return View(user);
         }
         
@@ -75,7 +75,7 @@ namespace StoreSurvey.Controllers
         public ActionResult Edit(int id)
         {
             User user = this.userService.UpdateUser(userService.GetUserById(id));
-            ViewBag.RoleID = new SelectList(db.Roles, "ID", "Name", user.RoleID);
+            ViewBag.RoleID = new SelectList(db.Roles, "id", "Name", user.RoleID);
             return View(user);
         }
 
@@ -86,7 +86,7 @@ namespace StoreSurvey.Controllers
         public ActionResult Edit(User user)
         {
             this.userService.UpdateUser(user);
-            ViewBag.RoleID = new SelectList(db.Roles, "ID", "Name", user.RoleID);
+            ViewBag.RoleID = new SelectList(db.Roles, "id", "Name", user.RoleID);
             return View(user);
         }
 
@@ -95,7 +95,7 @@ namespace StoreSurvey.Controllers
  
         public ActionResult Delete(int id)
         {
-            User user = db.Users.Single(u => u.ID == id);
+            User user = db.Users.Single(u => u.id == id);
             return View(user);
         }
 
@@ -105,7 +105,7 @@ namespace StoreSurvey.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {            
-            //User user = db.Users.Single(u => u.ID == id);
+            //User user = db.Users.Single(u => u.id == id);
             //db.Users.DeleteObject(user);
             //db.SaveChanges();
             return RedirectToAction("Index");

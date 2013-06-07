@@ -19,8 +19,6 @@ namespace StoreSurvey
         {
         }
     
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<User> Users { get; set; }
         public DbSet<Shop> Shops { get; set; }
         public DbSet<AdditionalSku> AdditionalSkus { get; set; }
         public DbSet<FixedDisplaySku> FixedDisplaySkus { get; set; }
@@ -33,8 +31,11 @@ namespace StoreSurvey
         public DbSet<MustHaveSkusBasic> MustHaveSkusBasics { get; set; }
         public DbSet<FixedDisplayBasic> FixedDisplayBasics { get; set; }
         public DbSet<WaveDisplayBasic> WaveDisplayBasics { get; set; }
-        public DbSet<HotSpotBasic> HotSpotBasics { get; set; }
         public DbSet<POPBasic> POPBasics { get; set; }
         public DbSet<AdditionalSkuBasic> AdditionalSkuBasics { get; set; }
+        public DbSet<ShopTypesBasic> ShopTypesBasics { get; set; }
+        public DbSet<HotSpotBasic> HotSpotBasics { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

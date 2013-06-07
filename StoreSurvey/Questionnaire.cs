@@ -22,7 +22,7 @@ namespace StoreSurvey
     
         // Primitive properties
     
-        public int Id { get; set; }
+        public int id { get; set; }
         public int shopId { get; set; }
         public string name { get; set; }
         public Nullable<System.DateTime> date { get; set; }

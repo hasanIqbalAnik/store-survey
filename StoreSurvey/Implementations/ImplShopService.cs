@@ -20,17 +20,17 @@ namespace StoreSurvey.Implementations
         public Shop GetShopById(int shopId)
         {
             var shop = (from m in shopSingle._db.Shops
-                       where m.Id == shopId
+                       where m.id == shopId
                         select m).FirstOrDefault() ;
             return shop;
         }
         public List<Shop> TakeNShops(int n) {
-            return (shopSingle._db.Shops.ToList().OrderBy(x => x.Id).Take(n)).ToList();
+            return (shopSingle._db.Shops.ToList().OrderBy(x => x.id).Take(n)).ToList();
         }
         public List<Shop> TakeNShopsAfterX(int n, int x){
         var shopsList = (from m in shopSingle._db.Shops
-                        where m.Id > x 
-                        orderby m.Id
+                        where m.id > x 
+                        orderby m.id
                         select m).ToList();
             return shopsList;
         }

@@ -16,7 +16,7 @@ namespace StoreSurvey
     {
         // Primitive properties
     
-        public int Id { get; set; }
+        public int id { get; set; }
         public Nullable<int> groupId { get; set; }
         public Nullable<int> availability { get; set; }
         public Nullable<int> totalDisplayCount { get; set; }

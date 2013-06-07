@@ -7050,7 +7050,7 @@ Sys.Res={
 'appDuplicateComponent':'Two components with the same id \'{0}\' can\'t be added to the application.',
 'historyCannotAddHistoryPointWithHistoryDisabled':'A history point can only be added if enableHistory is set to true.',
 'baseNotAClass':'Value is not a class.',
-'expectedElementOrId':'Value must be a DOM element or DOM element Id.',
+'expectedElementOrId':'Value must be a DOM element or DOM element id.',
 'methodNotFound':'No method found with name \'{0}\'.',
 'arrayParseBadFormat':'Value must be a valid string representation for an array. It must start with a \'[\' and end with a \']\'.',
 'stateFieldNameInvalid':'State field names must not contain any \'=\' characters.',

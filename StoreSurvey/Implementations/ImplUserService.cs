@@ -32,7 +32,7 @@ namespace StoreSurvey.Implementations
         public User GetUserById(int userId)
         {
             var user = (from m in this._db.Users
-                       where m.ID == userId
+                       where m.id == userId
                        select m).FirstOrDefault();
 
             return user;
@@ -47,7 +47,7 @@ namespace StoreSurvey.Implementations
         public User UpdateUser(User userToUpdate)
         {
 
-            var user = this.GetUserById(userToUpdate.ID);
+            var user = this.GetUserById(userToUpdate.id);
             
             user.Name = userToUpdate.Name;
             user.RoleID = userToUpdate.RoleID;
@@ -68,7 +68,7 @@ namespace StoreSurvey.Implementations
 
         public void ResetUserPassword(User userToResetPass)
         {
-            var user = GetUserById(userToResetPass.ID);
+            var user = GetUserById(userToResetPass.id);
 
 
         }
